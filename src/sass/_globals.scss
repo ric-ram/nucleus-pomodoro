@@ -1,0 +1,124 @@
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    //min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: radial-gradient(34.69% 60.86% at 50% 50%, $bg-light-green 0%, $bg-dark-green 100%);
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+}
+
+nav {
+    background-color: transparent;
+    padding: 2.5rem 2rem;
+    
+
+    ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: 0.25fr 1.25fr 0.125fr 0.125fr;
+        grid-template-rows: 1fr;
+    }
+}
+
+h1 {
+    font-size: 1.625rem;
+    font-weight: normal;
+    color: $dark-green;
+    margin-left: 1rem;
+    margin-top: 0.625rem;
+} 
+
+p {
+    font-size: 0.875rem;
+    color: $dark-green;
+    font-weight: normal;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2.5rem 2rem;
+}
+
+.top-bar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 1fr;
+}  
+
+.top-left {
+    // grid-column: 1 / 2;
+    justify-self: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-right {
+    display: flex;
+    // grid-column: 3 / 4;
+    justify-self: end;
+}
+
+.center-rw {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle-btn {
+    display: block;
+    height: 3.625rem;
+    width: 3.625rem;
+    border-radius: 50%;
+    border: none;
+    box-shadow: $elem-shadow;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.line {
+    border-bottom: 1.5px solid $dark-green-trans;
+    display: block;
+    margin: 0.625rem 1rem 1rem 1rem;
+}
+
+.small-line {
+    width: 12.5rem;
+    border-bottom: 1.5px solid $dark-green;
+    display: block;
+    margin: 0rem 0.5rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}
