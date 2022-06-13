@@ -21,7 +21,7 @@ body {
 
 nav {
     background-color: transparent;
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 2rem 1rem 2.5rem;
     
 
     ul {
@@ -71,6 +71,8 @@ p {
 
 .top-right {
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     // grid-column: 3 / 4;
     justify-self: end;
 }
@@ -92,6 +94,21 @@ p {
     &:hover {
         cursor: pointer;
     }
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 300ms;
+}
+
+.w-bg {
+    background-color: $greyish-white;
+}
+
+.b-bg {
+    background-color: $blueish-green;
 }
 
 .line {

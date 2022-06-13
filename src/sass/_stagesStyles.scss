@@ -1,0 +1,33 @@
+.stage-placeholder {
+    list-style: none;
+    display: flex;
+    padding: 0.375rem;
+    background-color: $dark-green;
+    border-radius: 3rem;
+    justify-self: center;
+    gap: 25px;
+    box-shadow: $elem-shadow;
+    max-height: 3.625rem;
+}
+
+.stage-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 1.5rem;
+    width: 128px;
+    height: 46px;
+    color: $white;
+    font-size: 1rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.active-stage-btn {
+    background-color: $blueish-green;
+    color: $dark-green;
+    box-shadow: $elem-shadow;
+    font-weight: semi-bold;
+}
