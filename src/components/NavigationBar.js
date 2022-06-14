@@ -39,7 +39,6 @@ function Navbar(props) {
 function NavIconItem(props) {
 
     const [open, setOpen] = useState(false);
-    const [noText, setText] = useState(true);
 
     let domNode = useClickOutside(() => {
         setOpen(false);
@@ -71,7 +70,7 @@ const NavigationBar = () => {
         <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} menuClass={"task-menu-btn"} icon={<CheckIcon />} >
             <TaskMenu />
         </NavIconItem>
-        <NavMenu posClass={"center-rw"} menu={<StageBar />} >
+        <NavMenu posClass={"center-col"} menu={<StageBar />} >
             <TaskMenu />
         </NavMenu>
         

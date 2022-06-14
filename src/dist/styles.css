@@ -103,7 +103,7 @@ p {
   justify-self: end;
 }
 
-.center-rw {
+.center-col {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,6 +114,13 @@ p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.center {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
 }
 
 .circle-btn {
@@ -181,6 +188,13 @@ p {
 
 .ml-1 {
   margin-left: 1rem;
+}
+
+.popup-left {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  margin-left: 6.75%;
 }
 
 .stage-placeholder {
@@ -302,9 +316,9 @@ p {
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
   margin-top: 80px;
   font-size: 2rem;
   color: white;
