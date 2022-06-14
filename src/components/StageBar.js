@@ -1,20 +1,33 @@
-import StageButton from './StageButton';
+import { Tab, Tabs } from 'react-bootstrap';
+
+import { useState } from 'react';
+
+function Bar() {
+  const [key, setKey] = useState('work');
+
+  return (
+    <Tabs
+      id="stages-bar"
+      activeKey={key}
+      onSelect={(k) => setKey(k)}
+      className="stage-placeholder"
+    >
+      <Tab tabClassName={`stage-btn${key === 'work' ? " active-stage-btn" : ""}`} eventKey="work" title="Work">
+
+      </Tab>
+      <Tab tabClassName={`stage-btn${key === 'short-break' ? " active-stage-btn" : ""}`} eventKey="short-break" title="Short Break">
+
+      </Tab>
+      <Tab tabClassName={`stage-btn${key === 'long-break' ? " active-stage-btn" : ""}`} eventKey="long-break" title="Long Break">
+
+      </Tab>
+    </Tabs>
+  );
+}
 
 const StageBar = () => {
   return (
-    <ul className="stage-placeholder">
-        <li>
-            <StageButton 
-            title='Work'
-            activeClass='active-stage-btn' />
-        </li>
-        <li>
-            <StageButton title='Short Break'/>
-        </li>
-        <li>
-            <StageButton title='Long Break'/>
-        </li>
-    </ul>
+    <Bar />
   )
 }
 

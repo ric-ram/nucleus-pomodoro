@@ -39,6 +39,7 @@ function Navbar(props) {
 function NavIconItem(props) {
 
     const [open, setOpen] = useState(false);
+    const [noText, setText] = useState(true);
 
     let domNode = useClickOutside(() => {
         setOpen(false);
@@ -48,8 +49,8 @@ function NavIconItem(props) {
         <li ref={domNode} className={props.posClass}>
             <a href="#" className={[props.btnClass, props.iconClass, props.bgClass, props.menuClass].join(' ')} onClick={() => setOpen(!open)} >
                 {props.icon}
+                
             </a>
-            
             {open && props.children}
 
         </li>
@@ -58,9 +59,9 @@ function NavIconItem(props) {
 
 function NavMenu(props) {
     return (
-        <li className={props.posClass}>
-            {props.menu}
-        </li>
+      <li className={props.posClass}>
+          {props.menu}
+      </li>
     )
 }
 
@@ -70,7 +71,10 @@ const NavigationBar = () => {
         <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} menuClass={"task-menu-btn"} icon={<CheckIcon />} >
             <TaskMenu />
         </NavIconItem>
-        <NavMenu posClass={"center-rw"} menu={<StageBar />} />
+        <NavMenu posClass={"center-rw"} menu={<StageBar />} >
+            <TaskMenu />
+        </NavMenu>
+        
         <NavIconItem btnClass={"circle-btn"} posClass={"top-right"} iconClass={"icon-btn"} bgClass={"b-bg"} icon={<GearIcon />} >
             <SettingsMenu />
         </NavIconItem>
