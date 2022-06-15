@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 const ActionMenu = () => {
 
-  const { startTimer, pauseTimer } = useContext(SettingContext);
+  const { startTimer, pauseTimer, resetTimer } = useContext(SettingContext);
 
   return (
       <ul className='action-placeholder'>
@@ -12,7 +12,7 @@ const ActionMenu = () => {
             <ActionButton title="Start" typeClass="pill-btn" actionClass="start-btn" _callback={startTimer} />
           </li>
           <li>
-            <ActionButton typeClass="circle-btn" actionClass="restart-btn" />
+            <ActionButton typeClass="circle-btn" actionClass="restart-btn" _callback={resetTimer} />
           </li>
           <li>
             <ActionButton title="Pause" typeClass="pill-btn" actionClass="pause-btn" _callback={pauseTimer} />

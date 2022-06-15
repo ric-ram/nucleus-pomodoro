@@ -1,15 +1,25 @@
 import { Tab, Tabs } from 'react-bootstrap';
 
+import { SettingContext } from './../context/SettingsContext';
+import { useContext } from 'react';
+
 function Bar({ timerSettings, saveSettings }) {
-  console.log(timerSettings.active)
+
+  const { pauseTimer } = useContext(SettingContext);
+
   return (
     <Tabs
       id="stages-bar"
       activeKey={timerSettings.active}
-      onSelect={(k) => saveSettings({
-        ...timerSettings, 
-        active: k
-      })}
+      onSelect={(k) => {
+        if (k !== timerSettings.active) {
+          pauseTimer();
+        }
+        saveSettings({
+          ...timerSettings, 
+          active: k
+        });
+      }}
       className="stage-placeholder"
     >
       <Tab tabClassName={`stage-btn${timerSettings.active === 'work' ? " active-stage-btn" : ""}`} eventKey="work" title="Work">

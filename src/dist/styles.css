@@ -319,7 +319,7 @@ p {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2 / 3;
-  margin-top: 80px;
+  margin-top: 60px;
   font-size: 2rem;
   color: white;
   text-shadow: -5px -5px 10px rgba(18, 73, 72, 0.5), 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -712,7 +712,7 @@ p {
   display: flex;
   justify-self: center;
   gap: 1.375rem;
-  margin-top: 2.5rem;
+  margin-top: 4.5rem;
 }
 
 .pill-btn {

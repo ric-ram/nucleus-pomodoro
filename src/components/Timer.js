@@ -10,7 +10,7 @@ const Timer = ({ key = 1, time = 1, animate = false, children }) => {
     <CountdownCircleTimer
       key={key}
       isPlaying={animate}
-      duration={time * 60}
+      duration={time >= 0 ? time * 60 : 0}
       colors={[
           '#03B5AA'
         ]}
@@ -22,7 +22,7 @@ const Timer = ({ key = 1, time = 1, animate = false, children }) => {
         stopTimer();
       }}
     >
-
+      {children}
     </CountdownCircleTimer>
   )
 }
