@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -65,7 +66,6 @@ p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 2.5rem 2rem;
 }
 
 .top-bar {
@@ -327,6 +327,10 @@ p {
 
 .task-text-btn:hover {
   cursor: pointer;
+}
+
+.close-menu {
+  display: none;
 }
 
 .settings-menu-logged-off {
@@ -657,5 +661,93 @@ button:hover {
 p {
   font-size: 1.375rem;
   color: #022725;
+}
+
+.timer-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 3rem;
+}
+
+.timer-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 30rem;
+  width: 30rem;
+  border-radius: 50%;
+  color: #03b5a9;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), #03312E;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #03312E;
+  font-size: 4rem;
+  -webkit-box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.25), -20px -20px 40px rgba(19, 75, 73, 0.25);
+          box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.25), -20px -20px 40px rgba(19, 75, 73, 0.25);
+}
+
+.timer {
+  -webkit-box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.action-placeholder {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: center;
+  gap: 1.375rem;
+  margin-top: 2.5rem;
+}
+
+.pill-btn {
+  height: 3.625rem;
+  width: 8.75rem;
+  font-size: 1rem;
+  border-radius: 2.5rem;
+  border: none;
+}
+
+.pill-btn:hover {
+  cursor: pointer;
+}
+
+.start-btn {
+  background-color: #03b5a9;
+  color: #022725;
+  font-weight: semi-bold;
+  -webkit-box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.pause-btn {
+  background-color: #022725;
+  color: #03b5a9;
+  font-weight: semi-bold;
+  -webkit-box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.restart-btn {
+  background-image: url("../icons/restartIcon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: -5px -5px 10px rgba(18, 73, 73, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.25);
 }
 /*# sourceMappingURL=styles.css.map */

@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    //min-height: 100vh;
+    min-height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -52,7 +52,7 @@ p {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 2.5rem 2rem;
+    //fmargin: 2.5rem 2rem;
 }
 
 .top-bar {
