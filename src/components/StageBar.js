@@ -1,33 +1,33 @@
 import { Tab, Tabs } from 'react-bootstrap';
 
-import { useState } from 'react';
-
-function Bar() {
-  const [key, setKey] = useState('work');
-
+function Bar({ timerSettings, saveSettings }) {
+  console.log(timerSettings.active)
   return (
     <Tabs
       id="stages-bar"
-      activeKey={key}
-      onSelect={(k) => setKey(k)}
+      activeKey={timerSettings.active}
+      onSelect={(k) => saveSettings({
+        ...timerSettings, 
+        active: k
+      })}
       className="stage-placeholder"
     >
-      <Tab tabClassName={`stage-btn${key === 'work' ? " active-stage-btn" : ""}`} eventKey="work" title="Work">
+      <Tab tabClassName={`stage-btn${timerSettings.active === 'work' ? " active-stage-btn" : ""}`} eventKey="work" title="Work">
 
       </Tab>
-      <Tab tabClassName={`stage-btn${key === 'short-break' ? " active-stage-btn" : ""}`} eventKey="short-break" title="Short Break">
+      <Tab tabClassName={`stage-btn${timerSettings.active === 'short-break' ? " active-stage-btn" : ""}`} eventKey="short-break" title="Short Break">
 
       </Tab>
-      <Tab tabClassName={`stage-btn${key === 'long-break' ? " active-stage-btn" : ""}`} eventKey="long-break" title="Long Break">
+      <Tab tabClassName={`stage-btn${timerSettings.active === 'long-break' ? " active-stage-btn" : ""}`} eventKey="long-break" title="Long Break">
 
       </Tab>
     </Tabs>
   );
 }
 
-const StageBar = () => {
+const StageBar = ({ timerSettings, saveSettings }) => {
   return (
-    <Bar />
+    <Bar timerSettings={timerSettings} saveSettings={saveSettings} />
   )
 }
 

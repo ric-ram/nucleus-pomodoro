@@ -329,8 +329,8 @@ p {
   cursor: pointer;
 }
 
-.close-menu {
-  display: none;
+input {
+  padding-left: 0.5rem;
 }
 
 .settings-menu-logged-off {

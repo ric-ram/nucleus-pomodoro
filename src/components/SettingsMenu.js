@@ -26,6 +26,36 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
           long: parseInt(value)
         });
         break;
+      case 'shortFreq':
+        saveTemp({
+          ...tempSettings,
+          shortFreq: parseInt(value)
+        });
+        break;
+      case 'longFreq':
+        saveTemp({
+          ...tempSettings,
+          longFreq: parseInt(value)
+        });
+        break;
+      case 'notify': 
+        saveTemp({
+          ...tempSettings,
+          notify: !tempSettings.notify
+        });
+        break;
+      case 'showNotifyMin':
+        saveTemp({
+          ...tempSettings,
+          showNotifyMin: parseInt(value)
+        });
+        break;
+      case 'autoSwitch':
+        saveTemp({
+          ...tempSettings,
+          autoSwitch: !tempSettings.autoSwitch
+        });
+        break;
       default: break;
     }
   }
@@ -35,7 +65,6 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
     saveSettings(tempSettings);
     setParentState();
     e.preventDefault();
-    //updateExecute(newTimer)
   }
 
   const handleCancel = e => {
@@ -75,12 +104,12 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
           <div className="break-settings">
             <div className="break-form mb-1">
               <label htmlFor="short break every">Short break every</label>
-              <input type="number" id="shorttime" name="shorttime"></input>
+              <input type="number" id="shorttime" name="shortFreq" onChange={handleChange} value={tempSettings.shortFreq}></input>
               <label>pomodoros</label>
             </div>
             <div className="break-form">
               <label htmlFor="long break every">Long break every</label>
-              <input type="number" id="longtime" name="longtime"></input>
+              <input type="number" id="longtime" name="longFreq" onChange={handleChange} value={tempSettings.longFreq}></input>
               <label>pomodoros</label>
             </div>
           </div>
@@ -88,12 +117,12 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
           <div className="notif-settings">
             <label htmlFor="notification before timer ends" className="mr-1">Notification before timer ends</label>
             <label className="switch">
-              <input type="checkbox"/>
+              <input type="checkbox" name="notify" onChange={handleChange} checked={tempSettings.notify} />
               <span className="slider"></span>
             </label>
             <div className="notif-form mt-1">
               <label htmlFor="show notification" className="mr-1" >Show notification</label>
-              <input type="number" id="notif-minutes" name="notif-minutes" />
+              <input type="number" id="notif-minutes" name="showNotifyMin" onChange={handleChange} value={tempSettings.showNotifyMin}/>
               <label className="ml-1">minutes before</label>
             </div>
           </div>
@@ -101,7 +130,7 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
           <div className="ml-1">
             <label htmlFor="auto switch to next phase" className="mr-1">Automatically switch to the next phase</label>
             <label className="switch">
-              <input type="checkbox"/>
+              <input type="checkbox" name="autoSwitch" onChange={handleChange} checked={tempSettings.autoSwitch} />
               <span className="slider"></span>
             </label>
           </div>

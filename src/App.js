@@ -7,11 +7,11 @@ import { useContext } from 'react';
 
 function App() {
 
-  const { startTimerAnimation } = useContext(SettingContext);
+  const { startTimerAnimation, timerSettings, saveSettings } = useContext(SettingContext);
   
   return (
     <>
-      <NavigationBar />
+      <NavigationBar timerSettings={timerSettings} saveSettings={saveSettings} />
       <div className='center'>
         <TaskTextButton />
       </div>

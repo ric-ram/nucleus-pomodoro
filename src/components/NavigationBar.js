@@ -40,19 +40,18 @@ function Navbar(props) {
 function NavIconItem(props) {
 
   const [open, setOpen] = useState(false);
-  const { timerSettings, saveSettings } = useContext(SettingContext);
 
   let domNode = useClickOutside(() => {
     setOpen(false);
   });
 
-  let menu = (title) => {
+  let menu = (props) => {
     switch(props.title) {
       case 'tasks': return (
         <TaskMenu />
       );
       case 'settings': return (
-        <SettingsMenu setParentState={() => setOpen(!open)} timerSettings={timerSettings} saveSettings={saveSettings} />
+        <SettingsMenu setParentState={() => setOpen(!open)} timerSettings={props.timerSettings} saveSettings={props.saveSettings} />
       );
       case 'profile': return (
         <ProfileMenu />
@@ -68,28 +67,28 @@ function NavIconItem(props) {
               
           </a>
           {/* {open && props.children} */}
-          {open && menu(props.title)}
+          {open && menu(props)}
 
       </li>
   )
 }
 
-function NavMenu(props) {
-    return (
-      <li className={props.posClass}>
-          {props.menu}
-      </li>
-    )
+function NavBar(props) {
+  return (
+    <li className={props.posClass}>
+        {props.bar}
+    </li>
+  )
 }
 
-const NavigationBar = () => {
+const NavigationBar = ({ timerSettings, saveSettings }) => {
   return (
     <Navbar>
         <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} menuClass={"task-menu-btn"} icon={<CheckIcon />} title="tasks" ></NavIconItem>
         
-        <NavMenu posClass={"center-col"} menu={<StageBar />} ></NavMenu>
+        <NavBar posClass={"center-col"} bar={<StageBar timerSettings={timerSettings} saveSettings={saveSettings} />}></NavBar>
         
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-right"} iconClass={"icon-btn"} bgClass={"b-bg"} icon={<GearIcon />} title="settings"></NavIconItem>
+        <NavIconItem btnClass={"circle-btn"} posClass={"top-right"} iconClass={"icon-btn"} bgClass={"b-bg"} icon={<GearIcon />} title="settings"  timerSettings={timerSettings} saveSettings={saveSettings} ></NavIconItem>
         <NavIconItem btnClass={"circle-btn"} posClass={"top-right"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<ProfileIcon />} title="profile"></NavIconItem>
     </Navbar>
   )

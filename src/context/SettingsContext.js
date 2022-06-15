@@ -11,6 +11,11 @@ const SettingsContextProvider = (props) => {
         work: 1,
         short: 0.2,
         long: 0.5,
+        shortFreq: 1,
+        longFreq: 5,
+        notify: true,
+        showNotifyMin: 5,
+        autoSwitch: true,
         active: 'work'
       });
     
