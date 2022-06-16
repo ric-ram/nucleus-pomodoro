@@ -33,7 +33,7 @@
         font-size: 0.875rem;
     }
 
-    a {
+    .signUpLink {
         color: $blueish-green;
     }
 
@@ -55,7 +55,7 @@
         margin-left: 5px;
     }
 
-    input[type=text] {
+    .task-input {
         width: 92%;//19.5rem;
         height: 3.3125rem;
         margin-left: 1rem;
@@ -167,4 +167,120 @@
     grid-column: 1 / 2;
     justify-self: start;
     margin-left: 6.23%;
+}
+
+// To-Do styles
+
+.todo-placeHolder {
+    display: grid;
+    grid-template-columns: 0.15fr 1.18fr 0.33fr 0.33fr;
+    margin: 1rem;
+}
+
+.todo {
+    position: absolute;
+    grid-column: 1 / 2;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  
+    input {
+      position: relative;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+  }
+  
+  /* Hide the browser's default checkbox */
+  
+  /* Create a custom checkbox */
+  
+  .checkmark {
+    position: absolute;
+    top: 1.5px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: #eee;
+    border: 2px solid hsl(177, 90%, 8%);
+    border-radius: 5px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  
+  .todo {
+    &:hover input ~ .checkmark {
+      background-color: #ccc;
+    }
+  
+    input:checked .checkmark {
+      background-color: white;
+    }
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  
+  .todo {
+    input:checked ~ .checkmark:after {
+      display: block;
+    }
+   /* Style the checkmark/indicator */
+    .checkmark:after {
+      left: 3.5px;
+      top: 0;
+      width: 5px;
+      height: 10px;
+      border: solid hsl(177, 90%, 8%);
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+  
+.task-name {
+    grid-column: 2 / 3;
+    border: none;
+    color: $dark-green;
+    font-size: 1rem;
+    background: transparent;
+
+    &:focus {
+        border: 2px solid $dark-green;
+        outline: none;
+        color: $dark-green;
+        border-radius: 2px;
+        background: $white;
+    }
+}
+
+.selected-task {
+    text-decoration: line-through;
+}
+
+.edit {
+    text-decoration: none;
+    justify-self: center;
+    grid-column: 3 / 4;
+    color: $dark-green;
+}
+
+.deleteIcon {
+    grid-column: 4 / 5;
+    height: auto;
+    justify-self: end;
 }
