@@ -1,21 +1,27 @@
 import React, { createContext, useState } from 'react';
 
+import timerComplete from '../audio/timerComplete.wav';
+import timerLeftSound from '../audio/tickingClock.wav';
+
 export const SettingContext = createContext();
 
 
 const SettingsContextProvider = (props) => {
 
+    const audioTimerLeft = new Audio(timerLeftSound);
+    const audioTimerComplete = new Audio(timerComplete);
+
     const [currentTime, setCurrentTime] = useState(0);
     const [timerKey, setTimerKey] = useState(0);
     const [startTimerAnimation, setStartTimerAnimation] = useState(false);
     const [timerSettings, setTimerSettings] = useState({
-        work: 0.4,
-        short: 0.2,
+        work: 2,
+        short: 2,
         long: 0.3,
         shortFreq: 1,
         longFreq: 2,
         notify: true,
-        showNotifyMin: 5,
+        showNotifyMin: 1,
         autoSwitch: true,
         active: 'work',
         numPomodoros: 0
@@ -86,8 +92,12 @@ const SettingsContextProvider = (props) => {
         let minutes = Math.floor(remainingTime / 60);
         let seconds = remainingTime % 60;
 
-        if (timerSettings.notify && minutes === timerSettings.showNotifyMin) {
-            console.log("som")
+        if (timerSettings.active === 'work' && timerSettings.notify && remainingTime === (timerSettings.showNotifyMin * 60) && currentTime > timerSettings.showNotifyMin) {
+            audioTimerLeft.play();
+        }
+
+        if (remainingTime === 1) {
+            audioTimerComplete.play();
         }
 
         if (remainingTime < 0) {

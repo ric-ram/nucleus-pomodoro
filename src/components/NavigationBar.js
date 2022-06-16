@@ -1,10 +1,9 @@
-import { React, useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
 
 import { ReactComponent as CheckIcon } from '../icons/taskIcon.svg';
 import { ReactComponent as GearIcon } from '../icons/settingsIcon.svg';
 import { ReactComponent as ProfileIcon } from '../icons/profileIcon.svg';
 import ProfileMenu from '../components/ProfileMenu';
-import { SettingContext } from './../context/SettingsContext';
 import SettingsMenu from '../components/SettingsMenu';
 import StageBar from '../components/StageBar';
 import TaskMenu from '../components/TaskMenu';
@@ -66,7 +65,7 @@ function NavIconItem(props) {
               {props.icon}
               
           </a>
-          {/* {open && props.children} */}
+          
           {open && menu(props)}
 
       </li>

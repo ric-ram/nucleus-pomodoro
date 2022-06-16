@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSettings }) => {
+const SettingsMenu = ({ isLogged = false, setParentState, timerSettings, saveSettings }) => {
 
   const [ tempSettings, saveTemp ] = useState(timerSettings);
   
@@ -77,7 +77,7 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
       <div id="menu" className="settings-menu-logged-off">
           <h1>Timer Settings</h1>
           <div className="line"></div>
-          <p>Please <a href="#" target="_blank" >sign up htmlFor free</a> to customize timer settings!</p>
+          <p>Please <a href="#" target="_blank" >sign up for free</a> to customize timer settings!</p>
       </div>
     )
   } else {

@@ -23,9 +23,8 @@ let useClickOutside = (handler) => {
 };
 
 const TaskTextButton = ({ currentTask='Click here to create a task', text }) => {
-  const [open, setOpen] = useState(false);
-
   
+  const [open, setOpen] = useState(false);
 
   let domNode = useClickOutside(() => {
     setOpen(false);
@@ -33,12 +32,14 @@ const TaskTextButton = ({ currentTask='Click here to create a task', text }) => 
 
   
   return (
-    <>
-      <button  ref={domNode} className='task-text-btn' onClick={() => setOpen(!open)}>{currentTask}</button>
-      {open && <div className="popup-left">
-        <TaskMenu/>
-      </div>}
-    </>
+    <div ref={domNode} className="task-text-div" >
+      <button   className='task-text-btn' onClick={() => setOpen(!open)}>{currentTask}</button>
+      
+      { open && 
+        <div className="popup-left">
+          <TaskMenu />
+        </div> }
+    </div>
   )
 }
 

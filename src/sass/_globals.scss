@@ -83,11 +83,6 @@ p {
     align-items: center;
 }
 
-.center {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
 .circle-btn {
     display: block;
     height: 3.625rem;
@@ -143,9 +138,4 @@ p {
 
 .ml-1 {
     margin-left: 1rem;
-}
-
-.popup-left {
-    grid-column: 1 / 2;
-    margin-left: 6.75%;
 }

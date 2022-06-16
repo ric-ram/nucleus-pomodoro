@@ -18,9 +18,7 @@ function App() {
         timerSettings={timerSettings} 
         saveSettings={saveSettings} 
       />
-      <div className='center'>
-        <TaskTextButton />
-      </div>
+      <TaskTextButton />
       <div className='container'>
         <div className="timer-container">
           <div className="timer-wrapper">

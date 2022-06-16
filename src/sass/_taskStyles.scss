@@ -42,12 +42,13 @@
         color: $dark-green;
         font-weight: normal;
         margin-left: 1rem;
+        text-decoration: none;
     }
 
     .down-icon {
-        background: url('../icons/arrowIcon.svg');
-        background-repeat: no-repeat;
-        background-position: center;
+        // background: url('../icons/arrowIcon.svg');
+        // background-repeat: no-repeat;
+        // background-position: center;
         display: inline-block;
         height: 10px;
         width: 12px;
@@ -71,6 +72,81 @@
     }
 }
 
+.logged-in {
+    display: none;
+}
+
+.project-menu {
+    width: 10.375rem;
+    height: 3.25rem;
+    background-color: $dark-green;
+    position: absolute;
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+    border-radius: 0.3125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .projects {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: inherit;
+        padding: 1px;
+    }
+
+
+    button {
+        background: transparent;
+        border: none;
+        font-size: 0.8125rem;
+        color: $greyish-white;
+        padding: 0.3125rem;
+        //width: inherit;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 0.8125rem;
+        color: $greyish-white;
+        margin-top: 0.2rem;
+        //text-align: center;
+    }
+
+    .selected {
+        border-radius: 0.3125rem 0.3125rem 0 0;
+        background-color: $selected-white;
+        //margin: 1px;
+    }
+
+    .proj-line {
+        border-bottom: 1.5px solid $greyish-white;
+        display: block;
+        width: 100%;
+        //margin-top: 0.25rem;
+        //margin-bottom: 0.15rem;
+        //margin: 0.625rem 1rem 1rem 1rem;
+    }
+
+    .add-proj {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1px;
+    }
+
+    .ml-text {
+        margin-left: 0.5rem;
+    }
+}
+
+.task-text-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+
 .task-text-btn {
     background-color: transparent;
     background-repeat: no-repeat;
@@ -80,8 +156,15 @@
     font-size: 2rem;
     color: $white;
     text-shadow: $text-shadow;
+    align-self: center;
 
     &:hover {
         cursor: pointer;
     }
+}
+
+.popup-left {
+    grid-column: 1 / 2;
+    justify-self: start;
+    margin-left: 6.23%;
 }
