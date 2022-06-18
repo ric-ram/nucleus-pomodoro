@@ -247,6 +247,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  z-index: 1;
 }
 .project-menu .projects {
   display: flex;
@@ -287,6 +288,32 @@ p {
   margin-left: 0.5rem;
 }
 
+.project-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: hsla(0deg, 0%, 0%, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-placeholder {
+  position: relative;
+  padding: 2rem;
+  width: 100%;
+  max-width: 640px;
+  background-color: hsl(0deg, 0%, 85%);
+}
+.popup-placeholder .close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: hsl(177deg, 90%, 8%);
+}
+
 .task-text-div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -298,7 +325,7 @@ p {
   background-repeat: no-repeat;
   border: none;
   grid-column: 2/3;
-  margin-top: 60px;
+  margin-top: 80px;
   font-size: 2rem;
   color: hsl(0deg, 0%, 100%);
   text-shadow: -5px -5px 10px hsla(178deg, 60%, 18%, 0.5), 5px 5px 10px hsla(0deg, 0%, 0%, 0.5);
@@ -314,10 +341,26 @@ p {
   margin-left: 6.23%;
 }
 
+.todolist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.delete-completes {
+  text-decoration: none;
+  font-size: 1rem;
+  color: hsl(177deg, 90%, 8%);
+  align-self: flex-end;
+  margin-right: 1rem;
+}
+
 .todo-placeHolder {
   display: grid;
-  grid-template-columns: 0.15fr 1.18fr 0.33fr 0.33fr;
-  margin: 1rem;
+  grid-template-columns: 0.15fr 1.55fr 0.15fr 0.15fr;
+  align-items: center;
+  margin: 0 1rem;
 }
 
 .todo {
@@ -345,17 +388,17 @@ p {
   left: 0;
   height: 16px;
   width: 16px;
-  background-color: #eee;
+  background-color: hsl(0deg, 0%, 100%);
   border: 2px solid hsl(177deg, 90%, 8%);
   border-radius: 5px;
 }
 
 /* On mouse-over, add a grey background color */
 .todo:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: hsl(0deg, 0%, 85%);
 }
 .todo input:checked .checkmark {
-  background-color: white;
+  background-color: hsl(0deg, 0%, 100%);
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -383,12 +426,23 @@ p {
   transform: rotate(45deg);
 }
 
-.task-name {
+.task-link {
   grid-column: 2/3;
+  margin-right: 0.625rem;
+  height: 1.375rem;
+  align-self: center;
+}
+
+.task-name {
   border: none;
   color: hsl(177deg, 90%, 8%);
   font-size: 1rem;
   background: transparent;
+  font-family: inherit;
+  resize: none;
+  padding: 2px;
+  height: 1.375rem;
+  width: 100%;
 }
 .task-name:focus {
   border: 2px solid hsl(177deg, 90%, 8%);
@@ -396,6 +450,9 @@ p {
   color: hsl(177deg, 90%, 8%);
   border-radius: 2px;
   background: hsl(0deg, 0%, 100%);
+}
+.task-name:hover {
+  cursor: pointer;
 }
 
 .selected-task {
@@ -413,6 +470,7 @@ p {
   grid-column: 4/5;
   height: auto;
   justify-self: end;
+  text-decoration: none;
 }
 
 input {
@@ -701,7 +759,7 @@ p {
   display: flex;
   justify-self: center;
   gap: 1.375rem;
-  margin-top: 4.5rem;
+  margin-top: 8.5rem;
 }
 
 .pill-btn {

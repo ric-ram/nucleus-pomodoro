@@ -8,7 +8,7 @@ import Timer from './components/Timer';
 
 function App() {
 
-  const { currentTime, startTimerAnimation, stopTimer, timerSettings, saveSettings, time, timerKey } = useContext(SettingContext);
+  const { currentTime, startTimerAnimation, stopTimer, timerSettings, saveSettings, time, timerKey, currentTask } = useContext(SettingContext);
   
   useEffect(() => {saveSettings(timerSettings)}, [timerSettings, stopTimer])
 
@@ -18,7 +18,9 @@ function App() {
         timerSettings={timerSettings} 
         saveSettings={saveSettings} 
       />
-      <TaskTextButton />
+      <TaskTextButton 
+        currentTask={currentTask}
+      />
       <div className='container'>
         <div className="timer-container">
           <div className="timer-wrapper">

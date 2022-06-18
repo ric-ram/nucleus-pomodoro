@@ -1,14 +1,17 @@
+import { useContext, useEffect } from 'react';
+
 import { ReactComponent as DeleteIcon } from '../icons/deleteIcon.svg';
 import React from 'react'
-import { useEffect } from 'react';
+import { SettingContext } from './../context/SettingsContext';
 import { useRef } from 'react';
 import { useState } from 'react';
 
-const TaskToDo = ({ todo, setToDo }) => {
+const TaskToDo = ({ todo, toDoList, setToDoList }) => {
 
-    const [checked, setChecked] = useState(false);
+    const { setCurrentTask } = useContext(SettingContext);
+
+    const [checked, setChecked] = useState(todo.complete);
     const [disabled, setDisabled] = useState(true);
-    const [tempToDo, setTempToDo] = useState(todo);
 
     const ref = useRef(null);
 
@@ -18,21 +21,77 @@ const TaskToDo = ({ todo, setToDo }) => {
         }
     }, [disabled])
 
-    function handleChange() {
+    const updateState = (field, value) => {
+        const newState = toDoList.map(td => {
+            if (td.id === todo.id) {
+                return {
+                    ...td,
+                    [field]: value
+                }
+            }
+            return td;
+        })
+
+        return newState;
+    }
+
+    function handleChange() { 
+        if (!checked) {
+            setToDoList(
+                updateState("complete", true)
+            )
+        } else {
+            setToDoList(
+                updateState("complete", false)
+            )
+        }
         setChecked(!checked);
     }
 
-    //todo["task"]
+    function handleEnter(e) {
+        if(e.key === 'Enter') {
+           e.preventDefault()
+        }
+    }
+
+    function handleEdit(e) {
+        setToDoList(
+            updateState("task", e.target.value)
+        )
+    }
+
+    function handleDelete() {
+        setToDoList(toDoList.filter((el) => el.id !== todo.id));
+    }
+
+    function handleTaskSelect() {
+        if (disabled) {
+            setCurrentTask(todo.task);
+        }
+    }
 
     return (
         <div className='todo-placeHolder' >
             <form className="todo" onClick={handleChange}>
-                <input type="checkbox"  checked={checked ? "checked" : ""}  onChange={handleChange} />
+                <input 
+                    type="checkbox"  
+                    checked={checked ? "checked" : ""}  
+                    onChange={handleChange} />
                 <span className="checkmark"></span>
             </form>
-            <input ref={ref} type="text" id="task" className={`task-name${checked ? " selected-task" : ""}`} value={tempToDo["task"]} disabled={disabled} onChange={(ch) => setTempToDo(tempToDo["task"] + ch.nativeEvent.data)}/>
-            <a href='#' className='edit' onClick={() => setDisabled(!disabled)}>Edit</a>
-            <span className='deleteIcon'>{<DeleteIcon />}</span>
+            <a href='#' className='task-link' onClick={handleTaskSelect}>
+                <textarea 
+                    ref={ref} 
+                    type="text" 
+                    id="task" 
+                    className={`task-name${checked ? " selected-task" : ""}`} 
+                    value={todo.task} 
+                    disabled={disabled} 
+                    onChange={handleEdit} 
+                    onKeyPress={handleEnter}/>
+            </a>
+            <a href='#' className='edit' onClick={() => setDisabled(!disabled)} >{disabled ? "Edit" : "Save"}</a>
+            <a href="#" className='deleteIcon' onClick={handleDelete}>{<DeleteIcon />}</a>
         </div>
     )
 }

@@ -22,7 +22,7 @@ let useClickOutside = (handler) => {
   return domNode;
 };
 
-const TaskTextButton = ({ currentTask='Click here to create a task', text }) => {
+const TaskTextButton = ({ currentTask }) => {
   
   const [open, setOpen] = useState(false);
 
