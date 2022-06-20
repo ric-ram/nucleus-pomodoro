@@ -6,18 +6,16 @@ import { SettingContext } from './../context/SettingsContext';
 import ToDoList from './ToDoList';
 
 function SubMenu(props) {
-    const [open, setOpen] = useState(false);
-
     return (
         <div className='mt-1'>
-            <a href='#' className="select-proj" onClick={() => setOpen(!open)}>
+            <a href='#' className="select-proj" onClick={() => props.setOpen(!props.open)}>
                 Change Project 
                 <span role="img" className="down-icon">
                     {<DownArrow />}
                 </span>
             </a>
 
-            {open && props.menu}
+            {props.open && props.menu}
         </div>
     )
 }
@@ -26,6 +24,7 @@ const TaskMenu = ({ isLogged = true }) => {
 
     const { toDoList, setToDoList } = useContext(SettingContext);
     const [inputText, setInputText] = useState('');
+    const [openSubMenu, setOpenSubMenu] = useState(false);
 
     const handleInputText = (e) => {
         setInputText(e.target.value);
@@ -56,7 +55,7 @@ const TaskMenu = ({ isLogged = true }) => {
             <div className="mt-1 mb-1">
                 <p className={ isLogged ? 'logged-in' : ''}>Hint: <a href="#" target="_blank" className='signUpLink' >Sign Up for FREE</a> to save tasks after refresh</p>
             </div>
-            <SubMenu menu={<ProjectsMenu />} />
+            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} menu={<ProjectsMenu setOpenSubMenu={setOpenSubMenu} />} />
             <ToDoList toDoList={toDoList}  setToDoList={setToDoList} />
         </div>
     )

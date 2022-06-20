@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 
-import data from '../data.json';
+import projectsData from '../projects.json';
+import tasksData from '../tasks.json';
 import timerComplete from '../audio/timerComplete.wav';
 import timerLeftSound from '../audio/tickingClock.wav';
 
@@ -12,7 +13,10 @@ const SettingsContextProvider = (props) => {
     const audioTimerLeft = new Audio(timerLeftSound);
     const audioTimerComplete = new Audio(timerComplete);
 
-    const [toDoList, setToDoList] = useState(data);
+    const [projectList, setProjectList] = useState(projectsData);
+    const [currentProject, setCurrentProject] = useState(projectList[0])
+
+    const [toDoList, setToDoList] = useState(tasksData);
     const [currentTask, setCurrentTask] = useState('Click here to create a task');
 
     const [currentTime, setCurrentTime] = useState(0);
@@ -121,7 +125,7 @@ const SettingsContextProvider = (props) => {
     }
 
   return (
-    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask }}>
+    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject }}>
         {props.children}
     </SettingContext.Provider>
   )
