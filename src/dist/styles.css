@@ -853,6 +853,16 @@ p {
     height: 2.7rem;
     width: 7rem;
   }
+
+  .task-menu {
+    top: 6.75rem;
+  }
+  .task-menu:before {
+    height: 1.45rem;
+    width: 1.45rem;
+    top: -0.7rem;
+    left: 1.8rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .circle-btn {
@@ -872,8 +882,22 @@ p {
     height: 2.5rem;
     width: 6rem;
   }
+
+  .task-menu {
+    top: 6.25rem;
+  }
+  .task-menu:before {
+    height: 1.35rem;
+    width: 1.35rem;
+    top: -0.6rem;
+    left: 1.65rem;
+  }
 }
 @media only screen and (max-width: 850px) {
+  h1 {
+    font-size: 1.125rem;
+  }
+
   .circle-btn {
     height: 2.3125rem;
     width: 2.3125rem;
@@ -894,6 +918,31 @@ p {
   .stage-btn {
     height: 2rem;
     width: 5.125rem;
+    font-size: 0.875rem;
+  }
+
+  .task-menu {
+    width: 21.375rem;
+    height: 38.25rem;
+    top: 5.75rem;
+  }
+  .task-menu:before {
+    height: 1rem;
+    width: 1rem;
+    top: -0.5rem;
+    left: 1.6rem;
+  }
+  .task-menu h1 {
+    margin-top: 1rem;
+  }
+  .task-menu p {
+    font-size: 0.75rem;
+  }
+  .task-menu .select-proj {
+    font-size: 0.75rem;
+  }
+
+  .delete-completes, .task-name, .edit {
     font-size: 0.875rem;
   }
 }

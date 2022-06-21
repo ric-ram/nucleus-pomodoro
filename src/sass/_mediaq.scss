@@ -22,6 +22,18 @@
         height: 2.7rem;
         width: 7rem;
     }
+
+    // Task Menu
+    .task-menu {
+        top: 6.75rem;
+
+        &:before {
+            height: 1.45rem;
+            width: 1.45rem;
+            top: -0.7rem;
+            left: 1.8rem;
+        }
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -44,10 +56,26 @@
         height: 2.5rem;
         width: 6rem;
     }
+
+    // Task Menu
+    .task-menu {
+        top: 6.25rem;
+
+        &:before {
+            height: 1.35rem;
+            width: 1.35rem;
+            top: -0.6rem;
+            left: 1.65rem;
+        }
+    }
 }
 
 @media only screen and (max-width: 850px) {
     //globals
+    h1 {
+        font-size: 1.125rem;
+    }
+
     .circle-btn {
         height: 2.3125rem;
         width: 2.3125rem;
@@ -69,6 +97,36 @@
     .stage-btn {
         height: 2rem;
         width: 5.125rem;
+        font-size: 0.875rem;
+    }
+
+    // Task Menu
+    .task-menu {
+        width: 21.375rem;
+        height: 38.25rem;
+        top: 5.75rem;
+
+        &:before {
+            height: 1rem;
+            width: 1rem;
+            top: -0.5rem;
+            left: 1.6rem;
+        }
+
+        h1 {
+            margin-top: 1rem;
+        }
+
+        p {
+            font-size: 0.75rem;
+        }
+
+        .select-proj {
+            font-size: 0.75rem;
+        }
+    }
+
+    .delete-completes, .task-name, .edit {
         font-size: 0.875rem;
     }
 }

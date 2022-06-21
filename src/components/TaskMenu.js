@@ -20,7 +20,7 @@ function SubMenu(props) {
     )
 }
 
-const TaskMenu = ({ isLogged = true }) => {
+const TaskMenu = ({ isLogged = false }) => {
 
     const { toDoList, setToDoList } = useContext(SettingContext);
     const [inputText, setInputText] = useState('');
@@ -55,7 +55,7 @@ const TaskMenu = ({ isLogged = true }) => {
             <div className="mt-1 mb-1">
                 <p className={ isLogged ? 'logged-in' : ''}>Hint: <a href="#" target="_blank" className='signUpLink' >Sign Up for FREE</a> to save tasks after refresh</p>
             </div>
-            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} menu={<ProjectsMenu setOpenSubMenu={setOpenSubMenu} />} />
+            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} menu={<ProjectsMenu isLoggedIn={isLogged} setOpenSubMenu={setOpenSubMenu} />} />
             <ToDoList toDoList={toDoList}  setToDoList={setToDoList} />
         </div>
     )
