@@ -75,7 +75,6 @@
 }
 
 // Project Styles
-
 .project-menu {
     width: 10.375rem;
     min-height: 3.25rem;
@@ -214,7 +213,6 @@
 
 
 // Text Button Styles
-
 .task-text-div {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -243,8 +241,8 @@
     margin-left: 6.23%;
 }
 
-// To-Do styles
 
+// To-Do styles
 .todolist {
     display: flex;
     flex-direction: column;
@@ -275,21 +273,17 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  
+
     input {
-      position: relative;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
+        position: relative;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
     }
-  }
+}
   
-  /* Hide the browser's default checkbox */
-  
-  /* Create a custom checkbox */
-  
-  .checkmark {
+.checkmark {
     position: absolute;
     top: 1.5px;
     left: 0;
@@ -298,49 +292,41 @@
     background-color: $white;
     border: 2px solid $dark-green;
     border-radius: 5px;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  
-  .todo {
+}
+
+.todo {
     &:hover input ~ .checkmark {
-      background-color: $greyish-white;
+        background-color: $greyish-white;
     }
-  
+
     input:checked .checkmark {
-      background-color: $white;
+        background-color: $white;
     }
-  }
+}
   
-  /* When the checkbox is checked, add a blue background */
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  
-  .checkmark:after {
+.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
+}
   
-  /* Show the checkmark when checked */
-  
-  .todo {
+.todo {
     input:checked ~ .checkmark:after {
-      display: block;
+        display: block;
     }
-   /* Style the checkmark/indicator */
+
     .checkmark:after {
-      left: 3.5px;
-      top: 0;
-      width: 5px;
-      height: 10px;
-      border: solid $dark-green;
-      border-width: 0 3px 3px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
+        left: 3.5px;
+        top: 0;
+        width: 5px;
+        height: 10px;
+        border: solid $dark-green;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
     }
-  }
+}
   
 .task-link {
     grid-column: 2 / 3;

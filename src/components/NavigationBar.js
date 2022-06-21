@@ -80,15 +80,16 @@ function NavBar(props) {
   )
 }
 
+
 const NavigationBar = ({ timerSettings, saveSettings }) => {
   return (
     <Navbar>
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<CheckIcon />} title="tasks" ></NavIconItem>
+        <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<CheckIcon className='icon'/>} title="tasks" ></NavIconItem>
         
         <NavBar posClass={"center-col"} bar={<StageBar timerSettings={timerSettings} saveSettings={saveSettings} />}></NavBar>
         
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-right"} iconClass={"icon-btn"} bgClass={"b-bg"} icon={<GearIcon />} title="settings"  timerSettings={timerSettings} saveSettings={saveSettings} ></NavIconItem>
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-right"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<ProfileIcon />} title="profile"></NavIconItem>
+        <NavIconItem btnClass={"circle-btn"} posClass={"top-right tpr-1"} iconClass={"icon-btn"} bgClass={"b-bg"} icon={<GearIcon className='icon' />} title="settings"  timerSettings={timerSettings} saveSettings={saveSettings} ></NavIconItem>
+        <NavIconItem btnClass={"circle-btn"} posClass={"top-right tpr-2"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<ProfileIcon className='icon2' />} title="profile"></NavIconItem>
     </Navbar>
   )
 }

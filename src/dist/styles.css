@@ -60,6 +60,7 @@ p {
 }
 
 .top-left {
+  grid-column: 1/2;
   justify-self: start;
   display: flex;
   flex-direction: column;
@@ -70,6 +71,14 @@ p {
   flex-direction: column;
   align-items: flex-end;
   justify-self: end;
+}
+
+.tpr-1 {
+  grid-column: 3/4;
+}
+
+.tpr-2 {
+  grid-column: 4/5;
 }
 
 .center-col {
@@ -137,13 +146,13 @@ p {
 .stage-placeholder {
   list-style: none;
   display: flex;
+  align-items: center;
   padding: 0.375rem;
   background-color: hsl(177deg, 90%, 8%);
   border-radius: 3rem;
   justify-self: center;
   gap: 25px;
   box-shadow: -5px -5px 10px hsla(178deg, 60%, 18%, 0.25), 5px 5px 10px hsla(0deg, 0%, 0%, 0.25);
-  max-height: 3.625rem;
 }
 
 .stage-btn {
@@ -151,8 +160,8 @@ p {
   background-repeat: no-repeat;
   border: none;
   border-radius: 1.5rem;
-  width: 128px;
-  height: 46px;
+  width: 8rem;
+  height: 2.875rem;
   color: hsl(0deg, 0%, 100%);
   font-size: 1rem;
 }
@@ -416,8 +425,6 @@ p {
   width: 0;
 }
 
-/* Hide the browser's default checkbox */
-/* Create a custom checkbox */
 .checkmark {
   position: absolute;
   top: 1.5px;
@@ -429,7 +436,6 @@ p {
   border-radius: 5px;
 }
 
-/* On mouse-over, add a grey background color */
 .todo:hover input ~ .checkmark {
   background-color: hsl(0deg, 0%, 85%);
 }
@@ -437,18 +443,12 @@ p {
   background-color: hsl(0deg, 0%, 100%);
 }
 
-/* When the checkbox is checked, add a blue background */
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the checkmark when checked */
-.todo {
-  /* Style the checkmark/indicator */
-}
 .todo input:checked ~ .checkmark:after {
   display: block;
 }
@@ -829,4 +829,83 @@ p {
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: -5px -5px 10px hsla(178deg, 60%, 18%, 0.25), 5px 5px 10px hsla(0deg, 0%, 0%, 0.25);
+}
+
+@media only screen and (max-width: 1300px) {
+  .circle-btn {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .icon {
+    width: 65%;
+  }
+
+  .icon2 {
+    width: 60%;
+  }
+
+  .stage-placeholder {
+    gap: 20px;
+  }
+
+  .stage-btn {
+    height: 2.7rem;
+    width: 7rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .circle-btn {
+    height: 2.625rem;
+    width: 2.625rem;
+  }
+
+  .icon {
+    width: 65%;
+  }
+
+  .icon2 {
+    width: 60%;
+  }
+
+  .stage-btn {
+    height: 2.5rem;
+    width: 6rem;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .circle-btn {
+    height: 2.3125rem;
+    width: 2.3125rem;
+  }
+
+  .icon {
+    width: 60%;
+  }
+
+  .icon2 {
+    width: 55%;
+  }
+
+  .stage-placeholder {
+    gap: 1rem;
+  }
+
+  .stage-btn {
+    height: 2rem;
+    width: 5.125rem;
+    font-size: 0.875rem;
+  }
+}
+@media only screen and (max-width: 675px) {
+  nav ul {
+    gap: 0.625rem;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .center-col {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    margin-top: 25px;
+  }
 }/*# sourceMappingURL=styles.css.map */

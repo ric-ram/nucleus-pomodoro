@@ -63,7 +63,7 @@ p {
 }  
 
 .top-left {
-    // grid-column: 1 / 2;
+    grid-column: 1 / 2;
     justify-self: start;
     display: flex;
     flex-direction: column;
@@ -73,8 +73,16 @@ p {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    // grid-column: 3 / 4;
+    //grid-column: 3 / 4;
     justify-self: end;
+}
+
+.tpr-1 {
+    grid-column: 3 / 4;
+}
+
+.tpr-2 {
+    grid-column: 4 / 5;
 }
 
 .center-col {

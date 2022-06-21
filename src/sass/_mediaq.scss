@@ -1,0 +1,90 @@
+@media only screen and (max-width: 1300px) {
+    //globals
+    .circle-btn {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .icon {
+        width: 65%;
+    }
+
+    .icon2 {
+        width: 60%;
+    }
+
+    // Stage Bar
+    .stage-placeholder {
+        gap: 20px;
+    }
+
+    .stage-btn {
+        height: 2.7rem;
+        width: 7rem;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    //globals
+    .circle-btn {
+        height: 2.625rem;
+        width: 2.625rem;
+    }
+
+    .icon {
+        width: 65%;
+    }
+
+    .icon2 {
+        width: 60%;
+    }
+
+    // Stage Bar
+    .stage-btn {
+        height: 2.5rem;
+        width: 6rem;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    //globals
+    .circle-btn {
+        height: 2.3125rem;
+        width: 2.3125rem;
+    }
+
+    .icon {
+        width: 60%;
+    }
+
+    .icon2 {
+        width: 55%;
+    }
+
+    // Stage Bar
+    .stage-placeholder {
+        gap: 1rem;
+    }
+
+    .stage-btn {
+        height: 2rem;
+        width: 5.125rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media only screen and (max-width: 675px) {
+    nav {
+        
+        ul {
+            gap: 0.625rem;
+            grid-template-rows: 1fr 1fr;
+        }
+    }
+
+    .center-col {
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+        margin-top: 25px
+    }
+}
