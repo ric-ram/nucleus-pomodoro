@@ -61,7 +61,7 @@ function NavIconItem(props) {
 
   return (
       <li ref={domNode} className={props.posClass}>
-          <a href="#" className={[props.btnClass, props.iconClass, props.bgClass, props.menuClass].join(' ')} onClick={() => setOpen(!open)} >
+          <a href="#" className={[props.btnClass, props.iconClass, props.bgClass].join(' ')} onClick={() => setOpen(!open)} >
               {props.icon}
               
           </a>
@@ -83,7 +83,7 @@ function NavBar(props) {
 const NavigationBar = ({ timerSettings, saveSettings }) => {
   return (
     <Navbar>
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} menuClass={"task-menu-btn"} icon={<CheckIcon />} title="tasks" ></NavIconItem>
+        <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<CheckIcon />} title="tasks" ></NavIconItem>
         
         <NavBar posClass={"center-col"} bar={<StageBar timerSettings={timerSettings} saveSettings={saveSettings} />}></NavBar>
         

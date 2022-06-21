@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SettingsMenu = ({ isLogged = false, setParentState, timerSettings, saveSettings }) => {
+const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSettings }) => {
 
   const [ tempSettings, saveTemp ] = useState(timerSettings);
   

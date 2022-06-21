@@ -48,6 +48,7 @@ input {
     position: absolute;
     box-shadow: $elem-shadow;
     transform: translateX(4%);
+    z-index: 1;
 
 
     &::before {

@@ -167,12 +167,9 @@ p {
   font-weight: semi-bold;
 }
 
-.task-menu-btn {
-  margin-left: 1rem;
-}
-
 .task-menu {
   top: 7.65rem;
+  left: 1.5rem;
   width: 25rem;
   height: 48rem;
   border-radius: 1rem;
@@ -560,6 +557,7 @@ input {
   position: absolute;
   box-shadow: -5px -5px 10px hsla(178deg, 60%, 18%, 0.25), 5px 5px 10px hsla(0deg, 0%, 0%, 0.25);
   transform: translateX(4%);
+  z-index: 1;
 }
 .settings-menu-logged-in::before {
   content: "";
