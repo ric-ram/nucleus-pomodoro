@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { ReactComponent as CheckIcon } from '../icons/taskIcon.svg';
 import { ReactComponent as GearIcon } from '../icons/settingsIcon.svg';
 import { ReactComponent as ProfileIcon } from '../icons/profileIcon.svg';
-import ProfileMenu from '../components/ProfileMenu';
-import SettingsMenu from '../components/SettingsMenu';
-import StageBar from '../components/StageBar';
-import TaskMenu from '../components/TaskMenu';
+import ProfileMenu from './ProfileMenu';
+import SettingsMenu from './SettingsMenu';
+import StageBar from './StageBar';
+import TaskMenu from './TaskMenu';
 
 let useClickOutside = (handler) => {
     let domNode = useRef();

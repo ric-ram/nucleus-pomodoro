@@ -11,6 +11,7 @@
     background-color: $greyish-white;
     position: absolute;
     box-shadow: $elem-shadow;
+    z-index: 1;
 
     &::before {
         content: "";
