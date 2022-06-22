@@ -115,11 +115,13 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
           </div>
           <div className="line"></div>
           <div className="notif-settings">
-            <label htmlFor="notification before timer ends" className="mr-1">Notification before timer ends</label>
-            <label className="switch">
-              <input type="checkbox" name="notify" onChange={handleChange} checked={tempSettings.notify} />
-              <span className="slider"></span>
-            </label>
+            <div className='switch-grid'>
+              <label htmlFor="notification before timer ends" className="mr-1">Notification before timer ends</label>
+              <label className="switch">
+                <input type="checkbox" name="notify" onChange={handleChange} checked={tempSettings.notify} />
+                <span className="slider"></span>
+              </label>
+            </div>
             <div className="notif-form mt-1">
               <label htmlFor="show notification" className="mr-1" >Show notification</label>
               <input type="number" id="notif-minutes" name="showNotifyMin" onChange={handleChange} value={tempSettings.showNotifyMin}/>
@@ -128,11 +130,13 @@ const SettingsMenu = ({ isLogged = true, setParentState, timerSettings, saveSett
           </div>
           <div className="line"></div>
           <div className="ml-1">
-            <label htmlFor="auto switch to next phase" className="mr-1">Automatically switch to the next phase</label>
-            <label className="switch">
-              <input type="checkbox" name="autoSwitch" onChange={handleChange} checked={tempSettings.autoSwitch} />
-              <span className="slider"></span>
-            </label>
+            <div className='switch-grid'>
+              <label htmlFor="auto switch to next phase" className="mr-1">Automatically switch to the next phase</label>
+              <label className="switch">
+                <input type="checkbox" name="autoSwitch" onChange={handleChange} checked={tempSettings.autoSwitch} />
+                <span className="slider"></span>
+              </label>
+            </div>
           </div>
           <div className="line"></div>
           <div className="set-btns">

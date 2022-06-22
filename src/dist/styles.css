@@ -21,7 +21,7 @@ body {
 
 nav {
   background-color: transparent;
-  padding: 2.5rem 2rem 1rem 2.5rem;
+  padding: 2.5rem 2.5rem 1rem 2.5rem;
 }
 nav ul {
   list-style: none;
@@ -613,6 +613,10 @@ input {
 .settings-menu-logged-in .notif-settings {
   margin-left: 1rem;
 }
+.settings-menu-logged-in .switch-grid {
+  display: flex;
+  align-items: center;
+}
 .settings-menu-logged-in .switch {
   position: relative;
   display: inline-block;
@@ -635,10 +639,10 @@ input {
 .settings-menu-logged-in .switch .slider::before {
   position: absolute;
   content: "";
-  height: 17px;
-  width: 17px;
-  left: 1.2px;
-  bottom: 1.4px;
+  height: 18px;
+  width: 18px;
+  left: 1px;
+  bottom: 1.2px;
   border-radius: 50%;
   background-color: hsl(176deg, 97%, 36%);
   transition: 0.4s;
@@ -857,7 +861,7 @@ p {
   .task-menu {
     top: 6.75rem;
   }
-  .task-menu:before {
+  .task-menu::before {
     height: 1.45rem;
     width: 1.45rem;
     top: -0.7rem;
@@ -886,7 +890,7 @@ p {
   .task-menu {
     top: 6.25rem;
   }
-  .task-menu:before {
+  .task-menu::before {
     height: 1.35rem;
     width: 1.35rem;
     top: -0.6rem;
@@ -911,6 +915,14 @@ p {
     width: 55%;
   }
 
+  .line {
+    margin-bottom: 0.625rem;
+  }
+
+  .mr-1 {
+    margin-right: 0.75rem;
+  }
+
   .stage-placeholder {
     gap: 1rem;
   }
@@ -926,7 +938,7 @@ p {
     height: 38.25rem;
     top: 5.75rem;
   }
-  .task-menu:before {
+  .task-menu::before {
     height: 1rem;
     width: 1rem;
     top: -0.5rem;
@@ -943,6 +955,67 @@ p {
   }
 
   .delete-completes, .task-name, .edit {
+    font-size: 0.875rem;
+  }
+
+  .settings-menu-logged-off {
+    width: 18.875rem;
+    height: 8rem;
+    top: 5.75rem;
+  }
+  .settings-menu-logged-off::before {
+    height: 1rem;
+    width: 1rem;
+    top: -0.5rem;
+    right: 1.45rem;
+  }
+  .settings-menu-logged-off h1 {
+    font-size: 1rem;
+    margin-top: 1.25rem;
+  }
+  .settings-menu-logged-off p {
+    font-size: 0.75rem;
+    margin-top: 1.75rem;
+  }
+
+  .settings-menu-logged-in {
+    width: 18.875rem;
+    height: 22rem;
+    top: 5.75rem;
+  }
+  .settings-menu-logged-in::before {
+    height: 1rem;
+    width: 1rem;
+    top: -0.5rem;
+    right: 1.45rem;
+  }
+  .settings-menu-logged-in .stage-form label, .settings-menu-logged-in .break-form label, .settings-menu-logged-in .notif-settings label, .settings-menu-logged-in .ml-1 label {
+    font-size: 0.75rem;
+  }
+  .settings-menu-logged-in input[type=number] {
+    width: 57px;
+    height: 17px;
+    font-size: 0.75rem;
+  }
+  .settings-menu-logged-in .switch {
+    width: 21px;
+    height: 10px;
+  }
+  .settings-menu-logged-in .switch .slider::before {
+    height: 9px;
+    width: 9px;
+    left: 0.5px;
+    bottom: 0.4px;
+  }
+  .settings-menu-logged-in .switch input:checked + .slider:before {
+    transform: translateX(10px) !important;
+  }
+  .settings-menu-logged-in .set-btns {
+    margin-top: 1rem;
+  }
+  .settings-menu-logged-in .sqr-btn {
+    width: 68px;
+    height: 30px;
     font-size: 0.875rem;
   }
 }

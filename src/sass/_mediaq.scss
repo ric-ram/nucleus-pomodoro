@@ -27,7 +27,7 @@
     .task-menu {
         top: 6.75rem;
 
-        &:before {
+        &::before {
             height: 1.45rem;
             width: 1.45rem;
             top: -0.7rem;
@@ -61,7 +61,7 @@
     .task-menu {
         top: 6.25rem;
 
-        &:before {
+        &::before {
             height: 1.35rem;
             width: 1.35rem;
             top: -0.6rem;
@@ -89,6 +89,14 @@
         width: 55%;
     }
 
+    .line {
+        margin-bottom: 0.625rem;
+    }
+
+    .mr-1 {
+        margin-right: 0.75rem;
+    }
+
     // Stage Bar
     .stage-placeholder {
         gap: 1rem;
@@ -106,7 +114,7 @@
         height: 38.25rem;
         top: 5.75rem;
 
-        &:before {
+        &::before {
             height: 1rem;
             width: 1rem;
             top: -0.5rem;
@@ -129,6 +137,86 @@
     .delete-completes, .task-name, .edit {
         font-size: 0.875rem;
     }
+
+    // Settings Menu
+    .settings-menu-logged-off {
+        width: 18.875rem;
+        height: 8rem;
+        top: 5.75rem;
+
+        &::before {
+            height: 1rem;
+            width: 1rem;
+            top: -0.5rem;
+            right: 1.45rem;
+        }
+
+        h1 {
+            font-size: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        p {
+            font-size: 0.75rem;
+            margin-top: 1.75rem;
+        }
+    }
+
+    .settings-menu-logged-in {
+        width: 18.875rem;
+        height: 22rem;
+        top: 5.75rem;
+
+        &::before {
+            height: 1rem;
+            width: 1rem;
+            top: -0.5rem;
+            right: 1.45rem;
+        }
+
+        .stage-form, .break-form, .notif-settings, .ml-1 {
+            label {
+                font-size: 0.75rem;
+            }
+        }
+
+        input[type=number] {
+            width: 57px;
+            height: 17px;
+            font-size: 0.75rem;
+        }
+
+        .switch {
+            width: 21px;
+            height: 10px;
+
+            .slider {
+                &::before {
+                    height: 9px;
+                    width: 9px;
+                    left: 0.5px;
+                    bottom: 0.4px;
+                }
+            }
+
+            input {
+                &:checked + .slider:before {
+                    transform: translateX(10px) !important;
+                }
+            }
+        }
+
+        .set-btns {
+            margin-top: 1rem;
+        }
+
+        .sqr-btn {
+            width: 68px;
+            height: 30px;
+            font-size: 0.875rem;
+        }
+        
+    }
 }
 
 @media only screen and (max-width: 675px) {
@@ -146,3 +234,15 @@
         margin-top: 25px
     }
 }
+
+// @media only screen and (max-width: 450px) {
+//     nav {
+//         padding: 1rem 0.5rem;
+//     }
+
+//     .stage-btn {
+//         height: 1.5rem;
+//         width: 5rem;
+//         font-size: 0.75rem;
+//     }
+// }

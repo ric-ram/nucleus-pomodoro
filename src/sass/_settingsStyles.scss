@@ -112,6 +112,11 @@ input {
         margin-left: 1rem;
     }
 
+    .switch-grid {
+        display: flex;
+        align-items: center;
+    }
+
     .switch {
         position: relative;
         display: inline-block;
@@ -134,10 +139,10 @@ input {
             &::before {
                 position: absolute;
                 content: "";
-                height: 17px;
-                width: 17px;
-                left: 1.2px;
-                bottom: 1.4px;
+                height: 18px;
+                width: 18px;
+                left: 1px;
+                bottom: 1.2px;
                 border-radius: 50%;
                 background-color: $blueish-green;
                 transition: .4s;
@@ -153,10 +158,6 @@ input {
             &:checked + .slider {
                 background-color: $dark-green;
             }
-        
-            // &:focus + .slider {
-            //     box-shadow: 0 0 1px $dark-green;
-            // }
         
             &:checked + .slider:before {
                 transform: translateX(18.5px);
