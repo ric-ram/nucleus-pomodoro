@@ -849,7 +849,61 @@ p {
   .icon2 {
     width: 60%;
   }
+}
+@media only screen and (max-width: 1000px) {
+  .circle-btn {
+    height: 2.625rem;
+    width: 2.625rem;
+  }
 
+  .icon {
+    width: 65%;
+  }
+
+  .icon2 {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 850px) {
+  h1 {
+    font-size: 1.125rem;
+  }
+
+  .circle-btn {
+    height: 2.3125rem;
+    width: 2.3125rem;
+  }
+
+  .icon {
+    width: 60%;
+  }
+
+  .icon2 {
+    width: 55%;
+  }
+
+  .line {
+    margin-bottom: 0.625rem;
+  }
+
+  .small-line {
+    width: 7.875rem;
+    margin: 0 0.25rem;
+  }
+
+  .mr-1 {
+    margin-right: 0.75rem;
+  }
+
+  .ml-1 {
+    margin-left: 0.75rem;
+  }
+
+  .mt-1 {
+    margin-top: 0.75rem;
+  }
+}
+@media only screen and (max-width: 1300px) {
   .stage-placeholder {
     gap: 20px;
   }
@@ -878,21 +932,18 @@ p {
     top: -0.7rem;
     right: 1.8rem;
   }
+
+  .profile-menu-logged-off, .profile-menu-logged-in {
+    top: 6.75rem;
+  }
+  .profile-menu-logged-off::before, .profile-menu-logged-in::before {
+    height: 1.45rem;
+    width: 1.45rem;
+    top: -0.7rem;
+    right: 0.8rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
-  .circle-btn {
-    height: 2.625rem;
-    width: 2.625rem;
-  }
-
-  .icon {
-    width: 65%;
-  }
-
-  .icon2 {
-    width: 60%;
-  }
-
   .stage-btn {
     height: 2.5rem;
     width: 6rem;
@@ -917,33 +968,18 @@ p {
     top: -0.6rem;
     right: 1.65rem;
   }
+
+  .profile-menu-logged-off, .profile-menu-logged-in {
+    top: 6.25rem;
+  }
+  .profile-menu-logged-off::before, .profile-menu-logged-in::before {
+    height: 1.35rem;
+    width: 1.35rem;
+    top: -0.6rem;
+    right: 0.7rem;
+  }
 }
 @media only screen and (max-width: 850px) {
-  h1 {
-    font-size: 1.125rem;
-  }
-
-  .circle-btn {
-    height: 2.3125rem;
-    width: 2.3125rem;
-  }
-
-  .icon {
-    width: 60%;
-  }
-
-  .icon2 {
-    width: 55%;
-  }
-
-  .line {
-    margin-bottom: 0.625rem;
-  }
-
-  .mr-1 {
-    margin-right: 0.75rem;
-  }
-
   .stage-placeholder {
     gap: 1rem;
   }
@@ -1037,6 +1073,39 @@ p {
   .settings-menu-logged-in .sqr-btn {
     width: 68px;
     height: 30px;
+    font-size: 0.875rem;
+  }
+
+  .profile-menu-logged-off {
+    width: 8rem;
+    height: 4.6875rem;
+    top: 5.75rem;
+    padding: 0.75rem 0.625rem;
+    justify-content: space-between;
+  }
+  .profile-menu-logged-off::before {
+    width: 1rem;
+    height: 1rem;
+    top: -0.5rem;
+    right: 0.7rem;
+  }
+  .profile-menu-logged-off button {
+    font-size: 0.875rem;
+  }
+
+  .profile-menu-logged-in {
+    width: 8.375rem;
+    height: 8.25rem;
+    top: 5.75rem;
+    gap: 0.5rem;
+  }
+  .profile-menu-logged-in::before {
+    width: 1rem;
+    height: 1rem;
+    top: -0.5rem;
+    right: 0.7rem;
+  }
+  .profile-menu-logged-in button, .profile-menu-logged-in p {
     font-size: 0.875rem;
   }
 }
