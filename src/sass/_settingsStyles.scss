@@ -31,6 +31,7 @@ input {
     p {
         font-size: 1rem;
         margin-left: 1rem;
+        margin-top: 2rem;
         color: $greyish-white;
     }
 
@@ -142,7 +143,7 @@ input {
                 height: 18px;
                 width: 18px;
                 left: 1px;
-                bottom: 1.2px;
+                bottom: 1px;
                 border-radius: 50%;
                 background-color: $blueish-green;
                 transition: .4s;

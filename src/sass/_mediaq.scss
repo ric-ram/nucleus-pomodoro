@@ -34,6 +34,18 @@
             left: 1.8rem;
         }
     }
+
+    // Settings Menu
+    .settings-menu-logged-off, .settings-menu-logged-in {
+        top: 6.75rem;
+        
+        &::before {
+            height: 1.45rem;
+            width: 1.45rem;
+            top: -0.7rem;
+            right: 1.8rem;
+        }
+    }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -66,6 +78,18 @@
             width: 1.35rem;
             top: -0.6rem;
             left: 1.65rem;
+        }
+    }
+
+    // Settings Menu
+    .settings-menu-logged-off, .settings-menu-logged-in {
+        top: 6.25rem;
+        
+        &::before {
+            height: 1.35rem;
+            width: 1.35rem;
+            top: -0.6rem;
+            right: 1.65rem;
         }
     }
 }
@@ -201,7 +225,7 @@
 
             input {
                 &:checked + .slider:before {
-                    transform: translateX(10px) !important;
+                    transform: translateX(10.5px) !important;
                 }
             }
         }

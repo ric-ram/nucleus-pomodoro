@@ -542,6 +542,7 @@ input {
 .settings-menu-logged-off p {
   font-size: 1rem;
   margin-left: 1rem;
+  margin-top: 2rem;
   color: hsl(0deg, 0%, 85%);
 }
 .settings-menu-logged-off a {
@@ -642,7 +643,7 @@ input {
   height: 18px;
   width: 18px;
   left: 1px;
-  bottom: 1.2px;
+  bottom: 1px;
   border-radius: 50%;
   background-color: hsl(176deg, 97%, 36%);
   transition: 0.4s;
@@ -867,6 +868,16 @@ p {
     top: -0.7rem;
     left: 1.8rem;
   }
+
+  .settings-menu-logged-off, .settings-menu-logged-in {
+    top: 6.75rem;
+  }
+  .settings-menu-logged-off::before, .settings-menu-logged-in::before {
+    height: 1.45rem;
+    width: 1.45rem;
+    top: -0.7rem;
+    right: 1.8rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .circle-btn {
@@ -895,6 +906,16 @@ p {
     width: 1.35rem;
     top: -0.6rem;
     left: 1.65rem;
+  }
+
+  .settings-menu-logged-off, .settings-menu-logged-in {
+    top: 6.25rem;
+  }
+  .settings-menu-logged-off::before, .settings-menu-logged-in::before {
+    height: 1.35rem;
+    width: 1.35rem;
+    top: -0.6rem;
+    right: 1.65rem;
   }
 }
 @media only screen and (max-width: 850px) {
@@ -1008,7 +1029,7 @@ p {
     bottom: 0.4px;
   }
   .settings-menu-logged-in .switch input:checked + .slider:before {
-    transform: translateX(10px) !important;
+    transform: translateX(10.5px) !important;
   }
   .settings-menu-logged-in .set-btns {
     margin-top: 1rem;
