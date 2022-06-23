@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 
-import { ReactComponent as DownArrow } from '../icons/arrowIcon.svg';
+import { ReactComponent as DownArrow } from '../../../icons/arrowIcon.svg';
 import ProjectsMenu from './ProjectsMenu';
-import { SettingContext } from './../context/SettingsContext';
+import { SettingContext } from '../../../context/SettingsContext';
 import ToDoList from './ToDoList';
 
 function SubMenu(props) {

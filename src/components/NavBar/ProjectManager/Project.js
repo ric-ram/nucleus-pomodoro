@@ -1,4 +1,4 @@
-import { SettingContext } from './../context/SettingsContext';
+import { SettingContext } from '../../../context/SettingsContext';
 import { useContext } from 'react'
 
 const Project = ({ project, setOpenSubMenu }) => {

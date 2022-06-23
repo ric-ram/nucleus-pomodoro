@@ -1,4 +1,4 @@
-import { ReactComponent as AddIcon } from '../icons/addIcon.svg';
+import { ReactComponent as AddIcon } from '../../../icons/addIcon.svg';
 import ProjectList from './ProjectList';
 import ProjectPopUp from './ProjectPopUp';
 import { useState } from 'react';

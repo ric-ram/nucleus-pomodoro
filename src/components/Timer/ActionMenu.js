@@ -1,6 +1,6 @@
 import ActionButton from './ActionButton';
-import { ReactComponent as RestartIcon } from '../icons/restartIcon.svg';
-import { SettingContext } from './../context/SettingsContext';
+import { ReactComponent as RestartIcon } from '../../icons/restartIcon.svg';
+import { SettingContext } from '../../context/SettingsContext';
 import { useContext } from 'react';
 
 const ActionMenu = () => {

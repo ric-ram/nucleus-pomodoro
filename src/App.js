@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 
-import ActionMenu from './components/ActionMenu';
-import NavigationBar from './components/NavigationBar';
+import ActionMenu from './components/Timer/ActionMenu';
+import NavigationBar from './components/NavBar/NavigationBar';
 import { SettingContext } from './context/SettingsContext';
-import TaskTextButton from './components/TaskTextButton';
-import Timer from './components/Timer';
+import TaskTextButton from './components/NavBar/ProjectManager/TaskTextButton';
+import Timer from './components/Timer/Timer';
 
 function App() {
 

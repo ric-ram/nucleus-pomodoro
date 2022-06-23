@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 
-import { ReactComponent as CloseIcon } from '../icons/closeIcon.svg';
-import { SettingContext } from './../context/SettingsContext';
+import { ReactComponent as CloseIcon } from '../../../icons/closeIcon.svg';
+import { SettingContext } from '../../../context/SettingsContext';
 
 const ProjectPopUp = ({ open, setOpen }) => {
 

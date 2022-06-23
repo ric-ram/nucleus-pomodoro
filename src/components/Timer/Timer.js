@@ -1,5 +1,5 @@
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import { SettingContext } from './../context/SettingsContext';
+import { SettingContext } from '../../context/SettingsContext';
 import { useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
 

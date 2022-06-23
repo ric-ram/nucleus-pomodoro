@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
 
-import { ReactComponent as DeleteIcon } from '../icons/deleteIcon.svg';
+import { ReactComponent as DeleteIcon } from '../../../icons/deleteIcon.svg';
 import React from 'react'
-import { SettingContext } from './../context/SettingsContext';
+import { SettingContext } from '../../../context/SettingsContext';
 import { useRef } from 'react';
 import { useState } from 'react';
 

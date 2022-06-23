@@ -1,4 +1,4 @@
-import { SettingContext } from './../context/SettingsContext';
+import { SettingContext } from '../../../context/SettingsContext';
 import TaskToDo from './TaskToDo'
 import { useContext } from 'react'
 

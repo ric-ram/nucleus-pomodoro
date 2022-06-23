@@ -1,6 +1,6 @@
 import { Tab, Tabs } from 'react-bootstrap';
 
-import { SettingContext } from './../context/SettingsContext';
+import { SettingContext } from '../../../context/SettingsContext';
 import { useContext } from 'react';
 
 function Bar({ timerSettings, saveSettings }) {

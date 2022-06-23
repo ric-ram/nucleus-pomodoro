@@ -1,5 +1,5 @@
 import Project from './Project';
-import { SettingContext } from './../context/SettingsContext';
+import { SettingContext } from '../../../context/SettingsContext';
 import { useContext } from 'react';
 
 const ProjectList = ({ setOpenSubMenu, isLogged }) => {
