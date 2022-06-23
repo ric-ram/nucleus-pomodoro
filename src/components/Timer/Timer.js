@@ -9,7 +9,6 @@ const Timer = ({ key = 1, time = 1, animate = false, children }) => {
   const is1300 = useMediaQuery({ query: `(max-width: 1300px)` });
   const is1000 = useMediaQuery({ query: `(max-width: 1000px)` });
   const is850 = useMediaQuery({ query: `(max-width: 850px)` });
-  const isMobile = useMediaQuery({ query: `(max-width: 450px)` });
 
   return (
     <CountdownCircleTimer

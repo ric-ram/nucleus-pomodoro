@@ -1,9 +1,5 @@
 @import "variables";
 @import "globals";
-@import "stagesStyles";
-@import "taskStyles";
-@import "settingsStyles";
-@import "profileStyles";
-@import "timerStyles";
-@import "actionStyles";
-@import "mediaq.scss";
+@import "./navStyles/nav.scss";
+@import "./mainStyles/main.scss";
+@import "./mediaQueries/mediaq.scss";
