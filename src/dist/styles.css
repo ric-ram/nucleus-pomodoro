@@ -1120,4 +1120,38 @@ p {
     grid-column: 2/3;
     margin-top: 25px;
   }
+}
+@media only screen and (max-width: 1300px) {
+  .task-text-btn {
+    font-size: 1.8rem;
+  }
+
+  .timer-wrapper {
+    height: 24.375rem;
+    width: 24.375rem;
+    font-size: 3.5rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .task-text-btn {
+    font-size: 1.7rem;
+    grid-column: 1/4;
+  }
+
+  .timer-wrapper {
+    height: 20rem;
+    width: 20rem;
+    font-size: 2.75rem;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .task-text-btn {
+    font-size: 1.5rem;
+  }
+
+  .timer-wrapper {
+    height: 16.25rem;
+    width: 16.25rem;
+    font-size: 2rem;
+  }
 }/*# sourceMappingURL=styles.css.map */
