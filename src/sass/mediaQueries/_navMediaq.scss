@@ -270,14 +270,26 @@
     }
 }
 
-// @media only screen and (max-width: 450px) {
-//     nav {
-//         padding: 1rem 0.5rem;
-//     }
+@media only screen and (max-width: 450px) {
+    nav {
+        padding: 2rem 1rem 1rem 1rem;
+    }
 
-//     .stage-btn {
-//         height: 1.5rem;
-//         width: 5rem;
-//         font-size: 0.75rem;
-//     }
-// }
+    .task-menu {
+        top: 5.15rem;
+        left: 0.5rem;
+
+        &::before {
+            top: -0.45rem;
+            left: 1.2rem;
+        }
+    }
+
+    .settings-menu-logged-off, .settings-menu-logged-in {
+        top: 5.15rem;
+    }
+
+    .profile-menu-logged-off, .profile-menu-logged-in {
+        top: 5.15rem;
+    }
+}

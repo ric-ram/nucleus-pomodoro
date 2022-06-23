@@ -1132,6 +1132,28 @@ p {
     margin-top: 25px;
   }
 }
+@media only screen and (max-width: 450px) {
+  nav {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .task-menu {
+    top: 5.15rem;
+    left: 0.5rem;
+  }
+  .task-menu::before {
+    top: -0.45rem;
+    left: 1.2rem;
+  }
+
+  .settings-menu-logged-off, .settings-menu-logged-in {
+    top: 5.15rem;
+  }
+
+  .profile-menu-logged-off, .profile-menu-logged-in {
+    top: 5.15rem;
+  }
+}
 @media only screen and (max-width: 1300px) {
   .task-text-btn {
     font-size: 1.8rem;
