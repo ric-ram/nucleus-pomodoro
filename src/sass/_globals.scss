@@ -14,7 +14,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: radial-gradient(34.69% 60.86% at 50% 50%, $bg-light-green 0%, $bg-dark-green 100%);
+    background: radial-gradient(34.69% 60.86% at 50% 50%, $bg-light-green 0%, $bg-dark-green 100%) center center fixed;
     background-blend-mode: multiply;
     background-repeat: no-repeat;
 }
@@ -44,6 +44,13 @@ p {
     font-size: 0.875rem;
     color: $dark-green;
     font-weight: normal;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {

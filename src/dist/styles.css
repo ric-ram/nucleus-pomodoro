@@ -14,7 +14,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(34.69% 60.86% at 50% 50%, hsl(176deg, 71%, 16%) 0%, hsl(176deg, 88%, 10%) 100%);
+  background: radial-gradient(34.69% 60.86% at 50% 50%, hsl(176deg, 71%, 16%) 0%, hsl(176deg, 88%, 10%) 100%) center center fixed;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
 }
@@ -42,6 +42,13 @@ p {
   font-size: 0.875rem;
   color: hsl(177deg, 90%, 8%);
   font-weight: normal;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -802,6 +809,7 @@ p {
   justify-self: center;
   gap: 1.375rem;
   margin-top: 8.5rem;
+  margin-bottom: 2rem;
 }
 
 .pill-btn {
@@ -830,10 +838,10 @@ p {
 }
 
 .restart-btn {
-  background-image: url("../icons/restartIcon.svg");
-  background-repeat: no-repeat;
-  background-position: center;
   box-shadow: -5px -5px 10px hsla(178deg, 60%, 18%, 0.25), 5px 5px 10px hsla(0deg, 0%, 0%, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -1110,6 +1118,9 @@ p {
   }
 }
 @media only screen and (max-width: 675px) {
+  nav {
+    padding: 2rem 1.375rem 1rem 1.375rem;
+  }
   nav ul {
     gap: 0.625rem;
     grid-template-rows: 1fr 1fr;
@@ -1117,13 +1128,18 @@ p {
 
   .center-col {
     grid-row: 2/3;
-    grid-column: 2/3;
+    grid-column: 1/5;
     margin-top: 25px;
   }
 }
 @media only screen and (max-width: 1300px) {
   .task-text-btn {
     font-size: 1.8rem;
+    margin-top: 100px;
+  }
+
+  .timer-container {
+    margin-top: 4rem;
   }
 
   .timer-wrapper {
@@ -1131,11 +1147,21 @@ p {
     width: 24.375rem;
     font-size: 3.5rem;
   }
+
+  .pill-btn {
+    width: 8.25rem;
+    height: 3rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .task-text-btn {
     font-size: 1.7rem;
     grid-column: 1/4;
+    margin-top: 120px;
+  }
+
+  .timer-container {
+    margin-top: 5rem;
   }
 
   .timer-wrapper {
@@ -1143,15 +1169,31 @@ p {
     width: 20rem;
     font-size: 2.75rem;
   }
+
+  .pill-btn {
+    width: 7.25rem;
+    height: 2.625rem;
+  }
 }
 @media only screen and (max-width: 850px) {
   .task-text-btn {
     font-size: 1.5rem;
+    margin-top: 80px;
+  }
+
+  .timer-container {
+    margin-top: 6rem;
   }
 
   .timer-wrapper {
     height: 16.25rem;
     width: 16.25rem;
     font-size: 2rem;
+  }
+
+  .pill-btn {
+    width: 6.5rem;
+    height: 2.3125rem;
+    font-size: 0.875rem;
   }
 }/*# sourceMappingURL=styles.css.map */

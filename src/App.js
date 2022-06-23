@@ -18,20 +18,22 @@ function App() {
         timerSettings={timerSettings} 
         saveSettings={saveSettings} 
       />
-      <TaskTextButton 
-        currentTask={currentTask}
-      />
-      <div className='container'>
-        <div className="timer-container">
-          <div className="timer-wrapper">
-            <Timer 
-              key={timerKey}
-              time={currentTime} 
-              animate={startTimerAnimation} 
-            >{time}</Timer>
+      <div className='main'>
+        <TaskTextButton 
+          currentTask={currentTask}
+        />
+        <div className='container'>
+          <div className="timer-container">
+            <div className="timer-wrapper">
+              <Timer 
+                key={timerKey}
+                time={currentTime} 
+                animate={startTimerAnimation} 
+              >{time}</Timer>
+            </div>
           </div>
+          <ActionMenu />
         </div>
-        <ActionMenu />
       </div>
     </>
   );

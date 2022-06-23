@@ -255,6 +255,7 @@
 
 @media only screen and (max-width: 675px) {
     nav {
+        padding: 2rem 1.375rem 1rem 1.375rem;
         
         ul {
             gap: 0.625rem;
@@ -264,7 +265,7 @@
 
     .center-col {
         grid-row: 2 / 3;
-        grid-column: 2 / 3;
+        grid-column: 1 / 5;
         margin-top: 25px
     }
 }
