@@ -1218,4 +1218,24 @@ p {
     height: 2.3125rem;
     font-size: 0.875rem;
   }
+}
+@media only screen and (max-height: 1000px) {
+  .task-text-btn {
+    font-size: 1.5rem;
+    margin-top: 60px;
+  }
+
+  .action-placeholder {
+    margin-top: 4.5rem;
+  }
+}
+@media only screen and (max-height: 850px) {
+  .task-text-btn {
+    font-size: 1.5rem;
+    margin-top: 45px;
+  }
+
+  .action-placeholder {
+    margin-top: 3.5rem;
+  }
 }/*# sourceMappingURL=styles.css.map */
