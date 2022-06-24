@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 
 import ActionMenu from './components/Timer/ActionMenu';
+import LogRegister from './components/LogRegister/LogRegister';
 import NavigationBar from './components/NavBar/NavigationBar';
 import { SettingContext } from './context/SettingsContext';
 import TaskTextButton from './components/NavBar/ProjectManager/TaskTextButton';
@@ -14,7 +15,9 @@ function App() {
 
   return (
     <>
-      <NavigationBar 
+      <LogRegister />
+
+      {/* <NavigationBar 
         timerSettings={timerSettings} 
         saveSettings={saveSettings} 
       />
@@ -34,7 +37,7 @@ function App() {
           </div>
           <ActionMenu />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
