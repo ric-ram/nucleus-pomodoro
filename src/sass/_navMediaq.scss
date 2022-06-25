@@ -1,0 +1,283 @@
+@media only screen and (max-width: 1300px) {
+    // Stage Bar
+    .stage-placeholder {
+        gap: 20px;
+    }
+
+    .stage-btn {
+        height: 2.7rem;
+        width: 7rem;
+    }
+
+    // Task Menu
+    .task-menu {
+        top: 6.75rem;
+
+        &::before {
+            height: 1.45rem;
+            width: 1.45rem;
+            top: -0.7rem;
+            left: 1.8rem;
+        }
+    }
+
+    // Settings Menu
+    .settings-menu-logged-off, .settings-menu-logged-in {
+        top: 6.75rem;
+        
+        &::before {
+            height: 1.45rem;
+            width: 1.45rem;
+            top: -0.7rem;
+            right: 1.8rem;
+        }
+    }
+
+    // Profile Menu 
+    .profile-menu-logged-off, .profile-menu-logged-in {
+        top: 6.75rem;
+        
+        &::before {
+            height: 1.45rem;
+            width: 1.45rem;
+            top: -0.7rem;
+            right: 0.8rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    // Stage Bar
+    .stage-btn {
+        height: 2.5rem;
+        width: 6rem;
+    }
+
+    // Task Menu
+    .task-menu {
+        top: 6.25rem;
+
+        &::before {
+            height: 1.35rem;
+            width: 1.35rem;
+            top: -0.6rem;
+            left: 1.65rem;
+        }
+    }
+
+    // Settings Menu
+    .settings-menu-logged-off, .settings-menu-logged-in {
+        top: 6.25rem;
+        
+        &::before {
+            height: 1.35rem;
+            width: 1.35rem;
+            top: -0.6rem;
+            right: 1.65rem;
+        }
+    }
+
+    // Profile Menu 
+    .profile-menu-logged-off, .profile-menu-logged-in {
+        top: 6.25rem;
+        
+        &::before {
+            height: 1.35rem;
+            width: 1.35rem;
+            top: -0.6rem;
+            right: 0.7rem;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+    // Stage Bar
+    .stage-placeholder {
+        gap: 1rem;
+    }
+
+    .stage-btn {
+        height: 2rem;
+        width: 5.125rem;
+        font-size: 0.875rem;
+    }
+
+    // Task Menu
+    .task-menu {
+        width: 21.375rem;
+        height: 38.25rem;
+        top: 5.75rem;
+
+        &::before {
+            height: 1rem;
+            width: 1rem;
+            top: -0.5rem;
+            left: 1.6rem;
+        }
+
+        h1 {
+            margin-top: 1rem;
+        }
+
+        p {
+            font-size: 0.75rem;
+        }
+
+        .select-proj {
+            font-size: 0.75rem;
+        }
+    }
+
+    .delete-completes, .task-name, .edit {
+        font-size: 0.875rem;
+    }
+
+    // Settings Menu
+    .settings-menu-logged-off {
+        width: 18.875rem;
+        height: 8rem;
+        top: 5.75rem;
+
+        &::before {
+            height: 1rem;
+            width: 1rem;
+            top: -0.5rem;
+            right: 1.45rem;
+        }
+
+        h1 {
+            font-size: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        p {
+            font-size: 0.75rem;
+            margin-top: 1.75rem;
+        }
+    }
+
+    .settings-menu-logged-in {
+        width: 18.875rem;
+        height: 22rem;
+        top: 5.75rem;
+
+        &::before {
+            height: 1rem;
+            width: 1rem;
+            top: -0.5rem;
+            right: 1.45rem;
+        }
+
+        .stage-form, .break-form, .notif-settings, .ml-1 {
+            label {
+                font-size: 0.75rem;
+            }
+        }
+
+        input[type=number] {
+            width: 57px;
+            height: 17px;
+            font-size: 0.75rem;
+        }
+
+        .switch {
+            width: 21px;
+            height: 10px;
+
+            .slider {
+                &::before {
+                    height: 9px;
+                    width: 9px;
+                    left: 0.5px;
+                    bottom: 0.4px;
+                }
+            }
+
+            input {
+                &:checked + .slider:before {
+                    transform: translateX(10.5px) !important;
+                }
+            }
+        }
+
+        .set-btns {
+            margin-top: 1rem;
+        }
+
+        .sqr-btn {
+            width: 68px;
+            height: 30px;
+            font-size: 0.875rem;
+        }
+        
+    }
+
+    // Profile Menu 
+    .profile-menu-logged-off {
+        width: 8rem;
+        height: 4.6875rem;
+        top: 5.75rem;
+        padding: 0.75rem 0.625rem;
+        justify-content: space-between;
+        
+
+        &::before {
+            width: 1rem;
+            height: 1rem;
+            top: -0.5rem;
+            right: 0.7rem;
+        }
+
+        button {
+            font-size: 0.875rem;
+        }
+    }
+
+    .profile-menu-logged-in {
+        width: 8.375rem;
+        height: 8.25rem;
+        top: 5.75rem;
+        gap: 0.5rem;
+
+        &::before {
+            width: 1rem;
+            height: 1rem;
+            top: -0.5rem;
+            right: 0.7rem;
+        }
+
+        button, p {
+            font-size: 0.875rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 675px) {
+    nav {
+        padding: 2rem 1.375rem 1rem 1.375rem;
+        
+        ul {
+            gap: 0.625rem;
+            grid-template-rows: 1fr 1fr;
+        }
+    }
+
+    .center-col {
+        grid-row: 2 / 3;
+        grid-column: 1 / 5;
+        margin-top: 25px
+    }
+}
+
+// @media only screen and (max-width: 450px) {
+//     nav {
+//         padding: 1rem 0.5rem;
+//     }
+
+//     .stage-btn {
+//         height: 1.5rem;
+//         width: 5rem;
+//         font-size: 0.75rem;
+//     }
+// }

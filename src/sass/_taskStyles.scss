@@ -1,0 +1,87 @@
+.task-menu-btn {
+    margin-left: 1rem;
+}
+
+.task-menu {
+    top: 7.65rem;
+    width: 25rem;
+    height: 48rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: $greyish-white;
+    position: absolute;
+    box-shadow: $elem-shadow;
+
+    &::before {
+        content: "";
+        display: block;
+        height: 1.625rem;
+        width: 1.625rem;
+        background-color: inherit;
+        border: inherit;
+        position: absolute;
+        left: 2rem;
+        top: -0.8rem;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+        transform: rotate(-45deg);
+        border-radius: 0 0.25rem 0 0;
+        box-shadow: $elem-shadow;
+    }
+
+    p {
+        margin: 1rem;
+        font-size: 0.875rem;
+    }
+
+    a {
+        color: $blueish-green;
+    }
+
+    .select-proj {
+        font-size: 0.875rem;
+        color: $dark-green;
+        font-weight: normal;
+        margin-left: 1rem;
+    }
+
+    .down-icon {
+        background: url('../icons/arrowIcon.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+        height: 10px;
+        width: 12px;
+        margin-left: 5px;
+    }
+
+    input[type=text] {
+        width: 92%;//19.5rem;
+        height: 3.3125rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 0.875rem;
+        border: 1px solid $dark-green-trans;
+        border-radius: 0.25rem;
+    
+        &:focus {
+            border: 2px solid $dark-green;
+            outline: none;
+            color: $dark-green;
+        }
+    }
+}
+
+.task-text-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    grid-column: 2 / 3;
+    margin-top: 60px;
+    font-size: 2rem;
+    color: $white;
+    text-shadow: $text-shadow;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

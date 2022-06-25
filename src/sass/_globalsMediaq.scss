@@ -1,0 +1,72 @@
+@media only screen and (max-width: 1300px) {
+     //globals
+     .circle-btn {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .icon {
+        width: 65%;
+    }
+
+    .icon2 {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+        //globals
+        .circle-btn {
+            height: 2.625rem;
+            width: 2.625rem;
+        }
+    
+        .icon {
+            width: 65%;
+        }
+    
+        .icon2 {
+            width: 60%;
+        }
+}
+
+@media only screen and (max-width: 850px) {
+        //globals
+        h1 {
+            font-size: 1.125rem;
+        }
+    
+        .circle-btn {
+            height: 2.3125rem;
+            width: 2.3125rem;
+        }
+    
+        .icon {
+            width: 60%;
+        }
+    
+        .icon2 {
+            width: 55%;
+        }
+    
+        .line {
+            margin-bottom: 0.625rem;
+        }
+    
+        .small-line {
+            width: 7.875rem;
+            margin: 0 0.25rem;
+        }
+    
+        .mr-1 {
+            margin-right: 0.75rem;
+        }
+    
+        .ml-1 {
+            margin-left: 0.75rem;
+        }
+    
+        .mt-1 {
+            margin-top: 0.75rem;
+        }
+}
