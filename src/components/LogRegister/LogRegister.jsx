@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-
+import Form from './Form';
+import { ReactComponent as RightIcon } from '../../icons/signForm/rightArrow.svg';
 import { useState } from 'react';
 
 const Banner = (props) => {
@@ -37,8 +37,12 @@ const LogRegister = () => {
         <div className='form-container'>
             <Banner title="Sign Up" />
             <Selector isSignUp={isSignUp} setIsSignUp={setIsSignUp} />
-            <div className='form-placeholder'>
-            </div>
+            <form>
+                <div className='form-placeholder'>
+                    <Form isSignUp={isSignUp}/>
+                </div>
+                <button type="submit" className='submit-form'>{isSignUp ? 'Sign Up' : 'Log In'} {<RightIcon />}</button>
+            </form>
         </div>
     </>
   )

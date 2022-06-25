@@ -5,7 +5,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     box-shadow: $elem-shadow;
-    border-radius: 25px 25px 0px 0px;
+    border-radius: 25px;
 }
 
 .form-banner {
@@ -27,6 +27,7 @@
     flex-direction: column;
     align-items: center;
     background-color: $greyish-white;
+    padding: 2rem 4.25rem 0 4.25rem;
 }
 
 .selector {
@@ -47,4 +48,58 @@
         color: $dark-green;
         border-bottom: 2px solid $dark-green;
     }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    p, a {
+        font-size: 0.75rem;
+        text-align: center;
+        margin: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: $dark-green;
+    }
+}
+
+.input-form {
+    width: inherit;
+    display: flex;
+    margin-top: 1.75rem;
+}
+
+.input-icon {
+    width: 3.75rem;
+    height: 3.75rem;
+    background: $dark-green;
+    border-radius: 4px 0 0 4px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-input-text {
+   flex-basis: 100%;
+   border: 2px solid $dark-green;
+   font-size: 1rem;
+}
+
+.submit-form {
+    background-color: $blueish-green;
+    border: none;
+    border-radius: 0 0 25px 25px;
+    padding: 1.25rem;
+    width: 100%;
+    color: $white;
+    font-size: 1.75rem;
+    text-transform: uppercase;
 }
