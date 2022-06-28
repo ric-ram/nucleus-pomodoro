@@ -28,9 +28,7 @@ const Selector = (props) => {
     )
 }
 
-const LogRegister = () => {
-
-   const [isSignUp, setIsSignUp] = useState(true); 
+const LogRegister = ({ isSignUp, setIsSignUp }) => {
     
   return (
     <>

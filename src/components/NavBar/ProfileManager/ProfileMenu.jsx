@@ -1,11 +1,11 @@
-
+import { Link } from 'react-router-dom';
 
 const ProfileMenu = ({ isLogged=false }) => {
     if(!isLogged) {
         return (
           <div className="profile-menu-logged-off">
-              <button className="astext">Sign Up for Free</button>
-              <button className="astext">Login</button>
+              <Link className="astext route-link" to="/signup" >Sign Up for Free</Link>
+              <Link className="astext route-link" to="/login" >Login</Link>
           </div>
         )
     } else {
