@@ -1,6 +1,6 @@
 import Form from './Form';
+import { Link } from "react-router-dom";
 import { ReactComponent as RightIcon } from '../../icons/signForm/rightArrow.svg';
-import { useState } from 'react';
 
 const Banner = (props) => {
     return (
@@ -12,38 +12,30 @@ const Banner = (props) => {
 
 const Selector = (props) => {
 
-    const handleOnClickLogIn = () => {
-        props.setIsSignUp(false);
-    }
-
-    const handleOnClickSignUp = () => {
-        props.setIsSignUp(true);
-    }
-
     return (
         <div className='selector'>
-            <button onClick={handleOnClickLogIn} className={!props.isSignUp ? 'focused-btn' : ''} >Log In</button>
-            <button onClick={handleOnClickSignUp} className={props.isSignUp ? 'focused-btn' : ''}>Sign Up</button>
+            <Link to="/login" className={!props.isSignUp ? 'focused-btn' : ''} >Log In</Link>
+            <Link to="/signup" className={props.isSignUp ? 'focused-btn' : ''}>Sign Up</Link>
         </div>
     )
 }
 
-const LogRegister = ({ isSignUp, setIsSignUp }) => {
+const LogRegister = ({ isSignUp }) => {
     
-  return (
-    <>
-        <div className='form-container'>
-            <Banner title="Sign Up" />
-            <Selector isSignUp={isSignUp} setIsSignUp={setIsSignUp} />
-            <form>
-                <div className='form-placeholder'>
-                    <Form isSignUp={isSignUp}/>
-                </div>
-                <button type="submit" className='submit-form'>{isSignUp ? 'Sign Up' : 'Log In'} {<RightIcon />}</button>
-            </form>
-        </div>
-    </>
-  )
+    return (
+        <>
+            <div className='form-container'>
+                <Banner title={isSignUp ? "Sign Up" : "Log In"} />
+                <Selector isSignUp={isSignUp} />
+                <form>
+                    <div className='form-placeholder'>
+                        <Form isSignUp={isSignUp}/>
+                    </div>
+                    <button type="submit" className='submit-form'>{isSignUp ? 'Sign Up' : 'Log In'} {<RightIcon />}</button>
+                </form>
+            </div>
+        </>
+    )
 }
 
 export default LogRegister
