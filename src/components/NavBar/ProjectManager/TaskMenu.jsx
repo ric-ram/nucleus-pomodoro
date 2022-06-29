@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 
 import { ReactComponent as DownArrow } from '../../../icons/arrowIcon.svg';
+import { Link } from "react-router-dom";
 import ProjectsMenu from './ProjectsMenu';
 import { SettingContext } from '../../../context/SettingsContext';
 import ToDoList from './ToDoList';
@@ -53,7 +54,7 @@ const TaskMenu = ({ isLogged = false }) => {
                 <input type="text" id="taskname" placeholder="New task" className="task-input" onChange={handleInputText} value={inputText} />
             </form>
             <div className="mt-1 mb-1">
-                <p className={ isLogged ? 'logged-in' : ''}>Hint: <a href="#" target="_blank" className='signUpLink' >Sign Up for FREE</a> to save tasks after refresh</p>
+                <p className={ isLogged ? 'logged-in' : ''}>Hint: <Link to="/signup" className='signUpLink' >Sign Up for FREE</Link> to save tasks after refresh</p>
             </div>
             <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} menu={<ProjectsMenu isLoggedIn={isLogged} setOpenSubMenu={setOpenSubMenu} />} />
             <ToDoList toDoList={toDoList}  setToDoList={setToDoList} />
