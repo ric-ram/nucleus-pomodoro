@@ -10,6 +10,8 @@ export const SettingContext = createContext();
 
 const SettingsContextProvider = (props) => {
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     const audioTimerLeft = new Audio(timerLeftSound);
     const audioTimerComplete = new Audio(timerComplete);
 
@@ -125,7 +127,7 @@ const SettingsContextProvider = (props) => {
     }
 
   return (
-    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject }}>
+    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject, isLoggedIn, setIsLoggedIn }}>
         {props.children}
     </SettingContext.Provider>
   )

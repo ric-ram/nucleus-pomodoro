@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 
-const SettingsMenu = ({ isLogged = false, setParentState, timerSettings, saveSettings }) => {
+const SettingsMenu = ({ isLoggedIn, setParentState, timerSettings, saveSettings }) => {
 
   const [ tempSettings, saveTemp ] = useState(timerSettings);
   
@@ -73,7 +73,7 @@ const SettingsMenu = ({ isLogged = false, setParentState, timerSettings, saveSet
     e.preventDefault();
   }
 
-  if (!isLogged) {
+  if (!isLoggedIn) {
     return (
       <div id="menu" className="settings-menu-logged-off">
           <h1>Timer Settings</h1>

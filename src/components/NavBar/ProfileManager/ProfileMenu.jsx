@@ -1,7 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const ProfileMenu = ({ isLogged=false }) => {
-    if(!isLogged) {
+import { SettingContext } from './../../../context/SettingsContext';
+import { useContext } from 'react';
+
+const ProfileMenu = ({ isLoggedIn, setOpen }) => {
+
+    const { setIsLoggedIn } = useContext(SettingContext);
+    
+    let navigate = useNavigate();
+
+    const handleLogout = () => {
+        setOpen(false);
+        setIsLoggedIn(false);
+        navigate("/");
+    }
+
+    if(!isLoggedIn) {
         return (
           <div className="profile-menu-logged-off">
               <Link className="astext route-link" to="/signup" >Sign Up for Free</Link>
@@ -16,7 +30,7 @@ const ProfileMenu = ({ isLogged=false }) => {
               <button className="astext ml-1">Reset Password</button>
               <button className="astext  ml-1">Delete Account</button>
               <div className="small-line"></div>
-              <button className="astext ml-1">Logout</button>
+              <button onClick={handleLogout} className="astext ml-1">Logout</button>
             </div>
         )
     }

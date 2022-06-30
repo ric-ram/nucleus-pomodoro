@@ -770,6 +770,8 @@ button:hover, .route-link:hover {
 
 .astext {
   text-decoration: none;
+  background: none;
+  border: none;
 }
 
 p {

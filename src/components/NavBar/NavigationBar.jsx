@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 import { ReactComponent as CheckIcon } from '../../icons/taskIcon.svg';
 import { ReactComponent as GearIcon } from '../../icons/settingsIcon.svg';
 import { ReactComponent as ProfileIcon } from '../../icons/profileIcon.svg';
 import ProfileMenu from './ProfileManager/ProfileMenu';
+import { SettingContext } from './../../context/SettingsContext';
 import SettingsMenu from './SettingsManager/SettingsMenu';
 import StageBar from './StageManager/StageBar';
 import TaskMenu from './ProjectManager/TaskMenu';
@@ -39,6 +40,7 @@ function Navbar(props) {
 function NavIconItem(props) {
 
   const [open, setOpen] = useState(false);
+  const { isLoggedIn } = useContext(SettingContext);
 
   let domNode = useClickOutside(() => {
     setOpen(false);
@@ -47,13 +49,13 @@ function NavIconItem(props) {
   let menu = (props) => {
     switch(props.title) {
       case 'tasks': return (
-        <TaskMenu />
+        <TaskMenu isLoggedIn={isLoggedIn}/>
       );
       case 'settings': return (
-        <SettingsMenu setParentState={() => setOpen(!open)} timerSettings={props.timerSettings} saveSettings={props.saveSettings} />
+        <SettingsMenu setParentState={() => setOpen(!open)} timerSettings={props.timerSettings} saveSettings={props.saveSettings} isLoggedIn={isLoggedIn} />
       );
       case 'profile': return (
-        <ProfileMenu />
+        <ProfileMenu isLoggedIn={isLoggedIn} setOpen={setOpen} />
       );
       default: return({});
     }
