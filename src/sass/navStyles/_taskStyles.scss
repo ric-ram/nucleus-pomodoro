@@ -35,24 +35,6 @@
         color: $blueish-green;
     }
 
-    .select-proj {
-        font-size: 0.875rem;
-        color: $dark-green;
-        font-weight: normal;
-        margin-left: 1rem;
-        text-decoration: none;
-    }
-
-    .down-icon {
-        // background: url('../icons/arrowIcon.svg');
-        // background-repeat: no-repeat;
-        // background-position: center;
-        display: inline-block;
-        height: 10px;
-        width: 12px;
-        margin-left: 5px;
-    }
-
     .task-input {
         width: 92%;//19.5rem;
         height: 3.3125rem;
@@ -74,14 +56,76 @@
     display: none;
 }
 
+.sub-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 1rem;
+
+    .select-proj {
+        font-size: 0.875rem;
+        color: $dark-green;
+        font-weight: normal;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .down-icon {
+        display: inline-block;
+        height: 10px;
+        width: 12px;
+        margin-left: 5px;
+    }
+
+    .gear-icon {
+        cursor: pointer;
+        justify-self: end;
+        align-self: center;
+
+        svg {
+            height: 15px;
+            width: 15px;
+        }
+    }
+}
+
+.sub-menu-title-div {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sub-menu-title {
+    border: none;
+    color: $dark-green;
+    font-size: 1rem;
+    background: transparent;
+    font-family: inherit;
+    overflow: hidden;
+
+    resize: none;
+    padding: 2px;
+    height: 1.35rem;
+    width: 65%;
+
+    &:focus {
+        border: 2px solid $dark-green;
+        outline: none;
+        color: $dark-green;
+        border-radius: 2px;
+        background: $white;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 // Project Styles
 .project-menu {
     width: 10.375rem;
     min-height: 3.25rem;
     background-color: $dark-green;
     position: absolute;
-    margin-left: 1rem;
-    margin-top: 0.25rem;
+    margin-top: .25rem;
     border-radius: 0.3125rem;
     display: flex;
     flex-direction: column;
@@ -96,7 +140,6 @@
         width: inherit;
         padding: 1px;
     }
-
 
     button {
         background: transparent;
@@ -121,15 +164,6 @@
         //margin: 1px;
     }
 
-    .proj-line {
-        border-bottom: 1.5px solid $greyish-white;
-        display: block;
-        width: 100%;
-        //margin-top: 0.25rem;
-        //margin-bottom: 0.15rem;
-        //margin: 0.625rem 1rem 1rem 1rem;
-    }
-
     .add-proj {
         display: flex;
         flex-direction: column;
@@ -137,10 +171,19 @@
         padding: 1px;
         margin-bottom: 5px;
     }
+}
 
-    .ml-text {
-        margin-left: 0.5rem;
-    }
+.proj-line {
+    border-bottom: 1.5px solid $greyish-white;
+    display: block;
+    width: 100%;
+    //margin-top: 0.25rem;
+    //margin-bottom: 0.15rem;
+    //margin: 0.625rem 1rem 1rem 1rem;
+}
+
+.ml-text {
+    margin-left: 0.5rem;
 }
 
 .project-popup {
@@ -209,6 +252,26 @@
         font-size: 1.25rem;
         box-shadow: 12px 12px 24px $dark-shadow, -12px -12px 24px $green-shadow;
     }
+}
+
+// Project Settings Styles
+.project-settings {
+    width: 10.375rem;
+    min-height: 3.25rem;
+    background-color: $dark-green;
+    position: absolute;
+    right: 1rem;
+    border-radius: 0.3125rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 1;
+    box-shadow: 10px 10px 20px $dark-shadow, -10px -10px 20px $green-shadow;
+
+    font-size: 0.8125rem;
+    color: $greyish-white;
 }
 
 

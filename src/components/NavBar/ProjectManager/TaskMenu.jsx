@@ -1,29 +1,136 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
+import { ReactComponent as CheckIcon } from '../../../icons/checkIcon.svg';
 import { ReactComponent as DownArrow } from '../../../icons/arrowIcon.svg';
 import { Link } from "react-router-dom";
+import ProjectSettings from './ProjectSettings';
 import ProjectsMenu from './ProjectsMenu';
 import { SettingContext } from '../../../context/SettingsContext';
+import { ReactComponent as SettingsIcon } from '../../../icons/settingsIcon.svg';
 import ToDoList from './ToDoList';
 
-function SubMenu(props) {
-    return (
-        <div className='mt-1'>
-            <a href='#' className="select-proj" onClick={() => props.setOpen(!props.open)}>
-                Change Project 
-                <span role="img" className="down-icon">
-                    {<DownArrow />}
-                </span>
-            </a>
+let useClickOutside = (handler) => {
+    let domNode = useRef();
+  
+    useEffect(() => {       
+      let maybeHandler = (event) => {
+        if (!domNode.current?.contains(event.target)) {
+            handler();
+        }
+      };
+  
+      document.addEventListener("mousedown", maybeHandler);
+  
+      return () => {
+        document.removeEventListener("mousedown", maybeHandler);
+      };
+    });
+  
+    return domNode;
+};
 
-            {props.open && props.menu}
+function SubMenuTitle(props) {
+
+    const { setCurrentProject } = useContext(SettingContext);
+
+    const editRef = useRef();
+
+    useEffect(() => {
+        console.log(editRef.current)
+        if (!props.disabled) {
+            editRef.current?.focus();
+        }
+    }, [props.disabled])
+
+    const updateState = (field, value) => {
+        const newState = props.projectList.map(prj => {
+            if (prj.id === props.currentProject.id) {
+                setCurrentProject({
+                    ...prj,
+                    [field]: value
+                });
+                return {
+                    ...prj,
+                    [field]: value
+                }
+            }
+            return prj;
+        })
+
+        return newState;
+    }
+
+    const handleEnter = (e) => {
+        if(e.key === 'Enter') {
+           e.preventDefault()
+        }
+    }
+
+    const handleEdit = (e) => {
+        props.setProjectList(
+            updateState("project", e.target.value)
+        )
+    }
+
+    return (
+        <textarea 
+            ref={editRef}
+            type="text" 
+            id="task" 
+            rows={1}
+            className="sub-menu-title" 
+            value={props.value}
+            disabled={props.disabled} 
+            onChange={handleEdit} 
+            onKeyPress={handleEnter} 
+        />
+    )
+}
+
+function SubMenu(props) {
+    const [openSettings, setOpenSettings] = useState(false);
+    const [disabled, setDisabled] = useState(true);
+    
+    let projectNode = useClickOutside(() => {
+        props.setOpen(false);
+    });
+
+    let settingsNode = useClickOutside(() => {
+        setOpenSettings(false);
+    });
+
+    const handleDoneClick = () => {
+        setDisabled(!disabled);
+        //props.setOpen(false);
+    }
+    
+    return (
+        <div className='mt-1 sub-menu'>
+            <div ref={projectNode} href='#' className="select-proj" >
+                <div className="sub-menu-title-div" onClick={() => props.setOpen(!props.open)}>
+                    <SubMenuTitle disabled={disabled} value={props.currentProject.id === props.projectList[0].id ? 'Change Project' : props.currentProject.project}  projectList={props.projectList} setProjectList={props.setProjectList} currentProject={props.currentProject} />
+
+                    <span role="img" className="down-icon">
+                        {disabled ? <DownArrow /> : <CheckIcon onClick={handleDoneClick} />}
+                    </span>
+                </div>
+                {disabled && props.open && <ProjectsMenu isLoggedIn={props.isLoggedIn} />}
+            </div>
+
+            
+            
+            {props.currentProject.id !== props.projectList[0].id ? 
+            <div ref={settingsNode} className='gear-icon' >
+                <SettingsIcon onClick={() => setOpenSettings(!openSettings)} />
+                {openSettings && <ProjectSettings disabled={disabled} setDisabled={setDisabled} />}
+            </div> : ''}
         </div>
     )
 }
 
 const TaskMenu = ({ isLoggedIn }) => {
 
-    const { toDoList, setToDoList } = useContext(SettingContext);
+    const { toDoList, setToDoList, currentProject, projectList, setProjectList } = useContext(SettingContext);
     const [inputText, setInputText] = useState('');
     const [openSubMenu, setOpenSubMenu] = useState(false);
 
@@ -33,7 +140,7 @@ const TaskMenu = ({ isLoggedIn }) => {
 
     const handleSubmitTodo = (e) => {
         if(e.key !== 'Enter') { // allows enter but prevents refresh of the page
-            e.preventDefault()
+            e.prevenprjefault()
         }
         setToDoList([
             ...toDoList,
@@ -56,7 +163,7 @@ const TaskMenu = ({ isLoggedIn }) => {
             <div className="mt-1 mb-1">
                 <p className={ isLoggedIn ? 'logged-in' : ''}>Hint: <Link to="/signup" className='signUpLink' >Sign Up for FREE</Link> to save tasks after refresh</p>
             </div>
-            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} menu={<ProjectsMenu isLoggedIn={isLoggedIn} setOpenSubMenu={setOpenSubMenu} />} />
+            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} projectList={projectList} currentProject={currentProject} isLoggedIn={isLoggedIn}  setProjectList={setProjectList} />
             <ToDoList toDoList={toDoList}  setToDoList={setToDoList} />
         </div>
     )

@@ -3,13 +3,13 @@ import ProjectList from './ProjectList';
 import ProjectPopUp from './ProjectPopUp';
 import { useState } from 'react';
 
-const ProjectsMenu = ({ setOpenSubMenu, isLoggedIn }) => {
+const ProjectsMenu = ({ isLoggedIn }) => {
 
   const [open, setOpen] = useState(false);
 
   return (
     <div className="project-menu">
-        <ProjectList setOpenSubMenu={setOpenSubMenu} isLogged={isLoggedIn} />
+        <ProjectList isLogged={isLoggedIn} />
         <div className="proj-line"></div>
         <div  className='add-proj'>
             <a href='#' onClick={() => isLoggedIn && setOpen(!open)}>

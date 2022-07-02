@@ -1,13 +1,12 @@
 import { SettingContext } from '../../../context/SettingsContext';
 import { useContext } from 'react'
 
-const Project = ({ project, setOpenSubMenu }) => {
+const Project = ({ project }) => {
 
     const { currentProject, setCurrentProject } = useContext(SettingContext);
 
     const handleOnClick = () => {
         setCurrentProject(project);
-        setOpenSubMenu(false);
     }
 
     return (
@@ -15,7 +14,7 @@ const Project = ({ project, setOpenSubMenu }) => {
         type="button"   
         onClick={handleOnClick}
         className={currentProject.id === project.id ? 'selected' : ''}>
-            {project.project}
+            {currentProject.id === project.id ? <>{project.project}<i> (current)</i></> : project.project}
         </button>
     )
 }

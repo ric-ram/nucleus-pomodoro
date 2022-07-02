@@ -27,7 +27,7 @@ let useClickOutside = (handler) => {
     });
   
     return domNode;
-  };
+};
 
 function Navbar(props) {
     return (
