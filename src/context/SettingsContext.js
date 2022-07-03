@@ -36,6 +36,10 @@ const SettingsContextProvider = (props) => {
         active: 'work',
         numPomodoros: 0
     });
+
+    function setDefaultProject() {
+        setCurrentProject(projectList[0]);
+    }
     
     function saveSettings(updatedSettings) {
         setTimerSettings(updatedSettings);
@@ -127,7 +131,7 @@ const SettingsContextProvider = (props) => {
     }
 
   return (
-    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject, isLoggedIn, setIsLoggedIn }}>
+    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject, isLoggedIn, setIsLoggedIn, setDefaultProject }}>
         {props.children}
     </SettingContext.Provider>
   )

@@ -36,13 +36,12 @@ function SubMenuTitle(props) {
     const editRef = useRef();
 
     useEffect(() => {
-        console.log(editRef.current)
         if (!props.disabled) {
             editRef.current?.focus();
         }
     }, [props.disabled])
 
-    const updateState = (field, value) => {
+    const updateProject = (field, value) => {
         const newState = props.projectList.map(prj => {
             if (prj.id === props.currentProject.id) {
                 setCurrentProject({
@@ -68,7 +67,7 @@ function SubMenuTitle(props) {
 
     const handleEdit = (e) => {
         props.setProjectList(
-            updateState("project", e.target.value)
+            updateProject("project", e.target.value)
         )
     }
 

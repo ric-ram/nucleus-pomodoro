@@ -16,7 +16,7 @@ const ProjectsMenu = ({ isLoggedIn }) => {
                 {<AddIcon />}
                 <span className='ml-text'>Add another project</span>
             </a>
-            <ProjectPopUp open={open} setOpen={setOpen} />
+            <ProjectPopUp toDelete={false} open={open} setOpen={setOpen} />
         </div>
 
     </div>
