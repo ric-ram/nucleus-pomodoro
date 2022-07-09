@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import { useState } from 'react';
 
-const SettingsMenu = ({ isLoggedIn, setParentState, timerSettings, saveSettings }) => {
+const SettingsMenu = ({ callSignUp, isAuthenticated, setParentState, timerSettings, saveSettings }) => {
 
   const [ tempSettings, saveTemp ] = useState(timerSettings);
   
@@ -73,12 +72,12 @@ const SettingsMenu = ({ isLoggedIn, setParentState, timerSettings, saveSettings 
     e.preventDefault();
   }
 
-  if (!isLoggedIn) {
+  if (!isAuthenticated) {
     return (
       <div id="menu" className="settings-menu-logged-off">
           <h1>Timer Settings</h1>
           <div className="line"></div>
-          <p>Please <Link to="/signup">sign up for free</Link> to customize timer settings!</p>
+          <p>Please <a href='#' onClick={callSignUp}>sign up for free</a> to customize timer settings!</p>
       </div>
     )
   } else {

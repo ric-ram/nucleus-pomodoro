@@ -1,31 +1,32 @@
-import { Link, useNavigate } from 'react-router-dom';
-
 import { SettingContext } from './../../../context/SettingsContext';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ProfileMenu = ({ isLoggedIn, setOpen }) => {
+const ProfileMenu = ({ callSignUp, isAuthenticated, setOpen, user }) => {
 
-    const { setIsLoggedIn } = useContext(SettingContext);
+    const { callLogin, logout } = useContext(SettingContext);
     
-    let navigate = useNavigate();
+    //let navigate = useNavigate();
 
     const handleLogout = () => {
         setOpen(false);
-        setIsLoggedIn(false);
-        navigate("/");
+        logout();
+        //setIsLoggedIn(false);
+        //navigate("/");
     }
 
-    if(!isLoggedIn) {
+    if(!isAuthenticated) {
         return (
           <div className="profile-menu-logged-off">
-              <Link className="astext route-link" to="/signup" >Sign Up for Free</Link>
-              <Link className="astext route-link" to="/login" >Login</Link>
+              <a className="astext route-link" onClick={callSignUp} >Sign Up for Free</a>
+              <a className="astext route-link" onClick={callLogin} >Login</a>
           </div>
         )
     } else {
+        console.log(JSON.stringify(user, null, 2))
         return (
             <div className="profile-menu-logged-in" >
-              <p className="ml-1 mt-1">your@email.com</p>
+              <p className="ml-1 mt-1 mr-1">{user.email}</p>
               <div className="small-line"></div>
               <button className="astext ml-1">Reset Password</button>
               <button className="astext  ml-1">Delete Account</button>

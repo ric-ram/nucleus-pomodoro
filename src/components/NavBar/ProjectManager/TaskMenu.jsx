@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from 'react';
 
 import { ReactComponent as CheckIcon } from '../../../icons/checkIcon.svg';
 import { ReactComponent as DownArrow } from '../../../icons/arrowIcon.svg';
-import { Link } from "react-router-dom";
 import ProjectSettings from './ProjectSettings';
 import ProjectsMenu from './ProjectsMenu';
 import { SettingContext } from '../../../context/SettingsContext';
@@ -113,7 +112,7 @@ function SubMenu(props) {
                         {disabled ? <DownArrow /> : <CheckIcon onClick={handleDoneClick} />}
                     </span>
                 </div>
-                {disabled && props.open && <ProjectsMenu isLoggedIn={props.isLoggedIn} />}
+                {disabled && props.open && <ProjectsMenu isAuthenticated={props.isAuthenticated} />}
             </div>
 
             
@@ -127,7 +126,7 @@ function SubMenu(props) {
     )
 }
 
-const TaskMenu = ({ isLoggedIn }) => {
+const TaskMenu = ({ callSignUp, isAuthenticated }) => {
 
     const { toDoList, setToDoList, currentProject, projectList, setProjectList } = useContext(SettingContext);
     const [inputText, setInputText] = useState('');
@@ -160,9 +159,9 @@ const TaskMenu = ({ isLoggedIn }) => {
                 <input type="text" id="taskname" placeholder="New task" className="task-input" onChange={handleInputText} value={inputText} />
             </form>
             <div className="mt-1 mb-1">
-                <p className={ isLoggedIn ? 'logged-in' : ''}>Hint: <Link to="/signup" className='signUpLink' >Sign Up for FREE</Link> to save tasks after refresh</p>
+                <p className={ isAuthenticated ? 'logged-in' : ''}>Hint: <a href='#' className='signUpLink' onClick={callSignUp} >Sign Up for FREE</a> to save tasks after refresh</p>
             </div>
-            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} projectList={projectList} currentProject={currentProject} isLoggedIn={isLoggedIn}  setProjectList={setProjectList} />
+            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} projectList={projectList} currentProject={currentProject} isAuthenticated={isAuthenticated}  setProjectList={setProjectList} />
             <ToDoList toDoList={toDoList}  setToDoList={setToDoList} />
         </div>
     )

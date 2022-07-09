@@ -1,14 +1,23 @@
 import React, { createContext, useState } from 'react';
 
+import axios from 'axios';
 import projectsData from '../projects.json';
 import tasksData from '../tasks.json';
 import timerComplete from '../audio/timerComplete.wav';
 import timerLeftSound from '../audio/tickingClock.wav';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const SettingContext = createContext();
 
 
 const SettingsContextProvider = (props) => {
+
+    const { loginWithRedirect, 
+        isAuthenticated, 
+        logout,
+        getAccessTokenSilently, 
+        user 
+    } = useAuth0();
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -25,9 +34,9 @@ const SettingsContextProvider = (props) => {
     const [timerKey, setTimerKey] = useState(0);
     const [startTimerAnimation, setStartTimerAnimation] = useState(false);
     const [timerSettings, setTimerSettings] = useState({
-        work: 2,
-        short: 2,
-        long: 0.3,
+        work: 20,
+        short: 5,
+        long: 10,
         shortFreq: 1,
         longFreq: 2,
         notify: true,
@@ -36,6 +45,20 @@ const SettingsContextProvider = (props) => {
         active: 'work',
         numPomodoros: 0
     });
+
+    function callLogin() {
+        loginWithRedirect();
+        // axios.get('http://localhost:4200/login')
+        // .then(resp => console.log(resp.data))
+        // .catch(e => console.log(e.message));
+    }
+
+    function callSignUp() {
+        loginWithRedirect({ screen_hint: 'signup' });
+        // axios.get('http://localhost:4200/signup')
+        // .then(resp => console.log(resp.data))
+        // .catch(e => console.log(e.message));
+    }
 
     function setDefaultProject() {
         setCurrentProject(projectList[0]);
@@ -131,7 +154,7 @@ const SettingsContextProvider = (props) => {
     }
 
   return (
-    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject, isLoggedIn, setIsLoggedIn, setDefaultProject }}>
+    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject, isLoggedIn, setIsLoggedIn, setDefaultProject, callLogin, callSignUp, isAuthenticated, logout, user }}>
         {props.children}
     </SettingContext.Provider>
   )

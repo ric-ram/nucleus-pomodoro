@@ -109,6 +109,11 @@ p {
     &:hover {
         cursor: pointer;
     }
+
+    img {
+        width: inherit;
+        border-radius: 50%;
+    }
 }
 
 .icon-btn {
@@ -133,10 +138,11 @@ p {
 }
 
 .small-line {
-    width: 12.5rem;
+    min-width: inherit;
     border-bottom: 1.5px solid $dark-green;
     display: block;
     margin: 0rem 0.5rem;
+    align-self: stretch;
 }
 
 .mb-1 {

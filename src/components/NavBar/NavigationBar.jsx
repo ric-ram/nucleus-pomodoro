@@ -40,7 +40,7 @@ function Navbar(props) {
 function NavIconItem(props) {
 
   const [open, setOpen] = useState(false);
-  const { isLoggedIn } = useContext(SettingContext);
+  const { callSignUp } = useContext(SettingContext);
 
   let domNode = useClickOutside(() => {
     setOpen(false);
@@ -49,13 +49,13 @@ function NavIconItem(props) {
   let menu = (props) => {
     switch(props.title) {
       case 'tasks': return (
-        <TaskMenu isLoggedIn={isLoggedIn}/>
+        <TaskMenu callSignUp={callSignUp} isAuthenticated={props.isAuthenticated}/>
       );
       case 'settings': return (
-        <SettingsMenu setParentState={() => setOpen(!open)} timerSettings={props.timerSettings} saveSettings={props.saveSettings} isLoggedIn={isLoggedIn} />
+        <SettingsMenu callSignUp={callSignUp} setParentState={() => setOpen(!open)} timerSettings={props.timerSettings} saveSettings={props.saveSettings} isAuthenticated={props.isAuthenticated} />
       );
       case 'profile': return (
-        <ProfileMenu isLoggedIn={isLoggedIn} setOpen={setOpen} />
+        <ProfileMenu callSignUp={callSignUp} isAuthenticated={props.isAuthenticated} setOpen={setOpen} user={props.user} />
       );
       default: return({});
     }
@@ -84,14 +84,46 @@ function NavBar(props) {
 
 
 const NavigationBar = ({ timerSettings, saveSettings }) => {
+  const {user, isAuthenticated } = useContext(SettingContext);
+
   return (
     <Navbar>
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-left"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<CheckIcon className='icon'/>} title="tasks" ></NavIconItem>
+        <NavIconItem 
+          btnClass={"circle-btn"} 
+          posClass={"top-left"} 
+          iconClass={"icon-btn"} 
+          bgClass={"w-bg"} 
+          icon={<CheckIcon className='icon'/>} 
+          title="tasks" 
+          isAuthenticated={isAuthenticated} 
+        ></NavIconItem>
         
-        <NavBar posClass={"center-col"} bar={<StageBar timerSettings={timerSettings} saveSettings={saveSettings} />}></NavBar>
+        <NavBar 
+          posClass={"center-col"} 
+          bar={<StageBar timerSettings={timerSettings} saveSettings={saveSettings} />}
+        ></NavBar>
         
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-right tpr-1"} iconClass={"icon-btn"} bgClass={"b-bg"} icon={<GearIcon className='icon' />} title="settings"  timerSettings={timerSettings} saveSettings={saveSettings} ></NavIconItem>
-        <NavIconItem btnClass={"circle-btn"} posClass={"top-right tpr-2"} iconClass={"icon-btn"} bgClass={"w-bg"} icon={<ProfileIcon className='icon2' />} title="profile"></NavIconItem>
+        <NavIconItem 
+          btnClass={"circle-btn"} 
+          posClass={"top-right tpr-1"} 
+          iconClass={"icon-btn"} 
+          bgClass={"b-bg"} 
+          icon={<GearIcon className='icon' />} 
+          title="settings"  
+          timerSettings={timerSettings} 
+          saveSettings={saveSettings} 
+          isAuthenticated={isAuthenticated}  
+        ></NavIconItem>
+        <NavIconItem 
+          btnClass={"circle-btn"} 
+          posClass={"top-right tpr-2"} 
+          iconClass={"icon-btn"} 
+          bgClass={"w-bg"} 
+          icon={!isAuthenticated ? <ProfileIcon className='icon2' /> : <img src={user.picture} alt={user.name} />}
+          title="profile" 
+          user={user} 
+          isAuthenticated={isAuthenticated} 
+        ></NavIconItem>
     </Navbar>
   )
 }
