@@ -10,25 +10,25 @@ function Bar({ timerSettings, saveSettings }) {
   return (
     <Tabs
       id="stages-bar"
-      activeKey={timerSettings.active}
+      activeKey={timerSettings.active_state}
       onSelect={(k) => {
-        if (k !== timerSettings.active) {
+        if (k !== timerSettings.active_state) {
           pauseTimer();
         }
         saveSettings({
           ...timerSettings, 
-          active: k
+          active_state: k
         });
       }}
       className="stage-placeholder"
     >
-      <Tab tabClassName={`stage-btn${timerSettings.active === 'work' ? " active-stage-btn" : ""}`} eventKey="work" title="Work">
+      <Tab tabClassName={`stage-btn${timerSettings.active_state === 'work' ? " active-stage-btn" : ""}`} eventKey="work" title="Work">
 
       </Tab>
-      <Tab tabClassName={`stage-btn${timerSettings.active === 'short-break' ? " active-stage-btn" : ""}`} eventKey="short-break" title="Short Break">
+      <Tab tabClassName={`stage-btn${timerSettings.active_state === 'short-break' ? " active-stage-btn" : ""}`} eventKey="short-break" title="Short Break">
 
       </Tab>
-      <Tab tabClassName={`stage-btn${timerSettings.active === 'long-break' ? " active-stage-btn" : ""}`} eventKey="long-break" title="Long Break">
+      <Tab tabClassName={`stage-btn${timerSettings.active_state === 'long-break' ? " active-stage-btn" : ""}`} eventKey="long-break" title="Long Break">
 
       </Tab>
     </Tabs>

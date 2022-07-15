@@ -23,7 +23,7 @@ const TaskToDo = ({ todo, toDoList, setToDoList }) => {
 
     const updateState = (field, value) => {
         const newState = toDoList.map(td => {
-            if (td.id === todo.id) {
+            if (td.task_id === todo.task_id) {
                 return {
                     ...td,
                     [field]: value
@@ -38,11 +38,11 @@ const TaskToDo = ({ todo, toDoList, setToDoList }) => {
     function handleChange() { 
         if (!checked) {
             setToDoList(
-                updateState("complete", true)
+                updateState("completed", true)
             )
         } else {
             setToDoList(
-                updateState("complete", false)
+                updateState("completed", false)
             )
         }
         setChecked(!checked);
@@ -61,7 +61,7 @@ const TaskToDo = ({ todo, toDoList, setToDoList }) => {
     }
 
     function handleDelete() {
-        setToDoList(toDoList.filter((el) => el.id !== todo.id));
+        setToDoList(toDoList.filter((el) => el.task_id !== todo.task_id));
     }
 
     function handleTaskSelect() {
@@ -83,7 +83,7 @@ const TaskToDo = ({ todo, toDoList, setToDoList }) => {
                 <textarea 
                     ref={ref} 
                     type="text" 
-                    id="task" 
+                    task_id="task" 
                     className={`task-name${checked ? " selected-task" : ""}`} 
                     value={todo.task} 
                     disabled={disabled} 

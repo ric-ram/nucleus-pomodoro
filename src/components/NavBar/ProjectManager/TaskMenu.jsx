@@ -43,7 +43,7 @@ function SubMenuTitle(props) {
 
     const updateProject = (field, value) => {
         const newState = props.projectList.map(prj => {
-            if (prj.id === props.currentProject.id) {
+            if (prj.project_id === props.currentProject.project_id) {
                 setCurrentProject({
                     ...prj,
                     [field]: value
@@ -107,7 +107,7 @@ function SubMenu(props) {
         <div className='mt-1 sub-menu'>
             <div ref={projectNode} href='#' className="select-proj" >
                 <div className="sub-menu-title-div" onClick={() => props.setOpen(!props.open)}>
-                    <SubMenuTitle disabled={disabled} value={props.currentProject.id === props.projectList[0].id ? 'Change Project' : props.currentProject.project}  projectList={props.projectList} setProjectList={props.setProjectList} currentProject={props.currentProject} />
+                    <SubMenuTitle disabled={disabled} value={props.currentProject.project_id === props.projectList[0].project_id ? 'Change Project' : props.currentProject.proj_name}  projectList={props.projectList} setProjectList={props.setProjectList} currentProject={props.currentProject} />
 
                     <span role="img" className="down-icon">
                         {disabled ? <DownArrow /> : <CheckIcon onClick={handleDoneClick} />}
@@ -118,7 +118,7 @@ function SubMenu(props) {
 
             
             
-            {props.currentProject.id !== props.projectList[0].id ? 
+            {props.currentProject.project_id !== props.projectList[0].project_id ? 
             <div ref={settingsNode} className='gear-icon' >
                 <SettingsIcon onClick={() => setOpenSettings(!openSettings)} />
                 {openSettings && <ProjectSettings disabled={disabled} setDisabled={setDisabled} />}
