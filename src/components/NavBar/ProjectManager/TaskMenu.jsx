@@ -31,7 +31,7 @@ let useClickOutside = (handler) => {
 
 function SubMenuTitle(props) {
 
-    const { setCurrentProject } = useContext(SettingContext);
+    const { currentProject, setCurrentProject, updateCurrentProject } = useContext(SettingContext);
 
     const editRef = useRef();
 
@@ -41,24 +41,6 @@ function SubMenuTitle(props) {
         }
     }, [props.disabled])
 
-    const updateProject = (field, value) => {
-        const newState = props.projectList.map(prj => {
-            if (prj.project_id === props.currentProject.project_id) {
-                setCurrentProject({
-                    ...prj,
-                    [field]: value
-                });
-                return {
-                    ...prj,
-                    [field]: value
-                }
-            }
-            return prj;
-        })
-
-        return newState;
-    }
-
     const handleEnter = (e) => {
         if(e.key === 'Enter') {
            e.preventDefault()
@@ -66,23 +48,36 @@ function SubMenuTitle(props) {
     }
 
     const handleEdit = (e) => {
-        props.setProjectList(
-            updateProject("project", e.target.value)
-        )
+        setCurrentProject({
+            ...currentProject,
+            proj_name: e.target.value
+        })
+    }
+
+    const handleDoneClick = () => {
+        updateCurrentProject(currentProject.proj_name);
+        props.setDisabled(!props.disabled);
+        //props.setOpen(false);
     }
 
     return (
-        <textarea 
-            ref={editRef}
-            type="text" 
-            id="task" 
-            rows={1}
-            className="sub-menu-title" 
-            value={props.value}
-            disabled={props.disabled} 
-            onChange={handleEdit} 
-            onKeyPress={handleEnter} 
-        />
+        <>
+            <textarea 
+                ref={editRef}
+                type="text" 
+                id="task" 
+                rows={1}
+                className="sub-menu-title" 
+                value={props.value}
+                disabled={props.disabled} 
+                onChange={handleEdit} 
+                onKeyPress={handleEnter} 
+            />
+
+                <span role="img" className="down-icon">
+                    {props.disabled ? <DownArrow /> : <CheckIcon onClick={handleDoneClick} />}
+                </span>
+        </>
     )
 }
 
@@ -97,21 +92,14 @@ function SubMenu(props) {
     let settingsNode = useClickOutside(() => {
         setOpenSettings(false);
     });
-
-    const handleDoneClick = () => {
-        setDisabled(!disabled);
-        //props.setOpen(false);
-    }
     
     return (
         <div className='mt-1 sub-menu'>
             <div ref={projectNode} href='#' className="select-proj" >
                 <div className="sub-menu-title-div" onClick={() => props.setOpen(!props.open)}>
-                    <SubMenuTitle disabled={disabled} value={props.currentProject.project_id === props.projectList[0].project_id ? 'Change Project' : props.currentProject.proj_name}  projectList={props.projectList} setProjectList={props.setProjectList} currentProject={props.currentProject} />
+                    <SubMenuTitle disabled={disabled} setDisabled={setDisabled} value={props.currentProject.project_id === props.projectList[0].project_id ? 'Change Project' : props.currentProject.proj_name}  projectList={props.projectList} setProjectList={props.setProjectList} currentProject={props.currentProject} />
 
-                    <span role="img" className="down-icon">
-                        {disabled ? <DownArrow /> : <CheckIcon onClick={handleDoneClick} />}
-                    </span>
+                    
                 </div>
                 {disabled && props.open && <ProjectsMenu isLoggedIn={props.isLoggedIn} />}
             </div>

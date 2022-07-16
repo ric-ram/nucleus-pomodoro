@@ -50,7 +50,7 @@ const SettingsContextProvider = (props) => {
                 setCurrentProject(data.projects[0]);
                 setToDoList(data.tasks);
             })
-            .catch(err => console.log(err));
+            .catch(err => err.json());
     }
 
     function setDefaultProject() {
@@ -77,10 +77,53 @@ const SettingsContextProvider = (props) => {
                 ])
                 return true;
             })
-            .catch(err => console.log)
+            .catch(err => err.json())
         } else {
             return false;
         }
+    }
+
+    function updateCurrentProject(projectName) {
+        if (isLoggedIn) {
+            const newProject = {
+                user_id: currentProject.user_id,
+                project_id: currentProject.project_id,
+                proj_name: projectName
+            }
+
+            fetch('http://localhost:4200/updateproject', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(newProject)
+            })
+            .then(res => res.json())
+            .then(project => {
+                const newList = projectList.map(prj => {
+                    if (prj.project_id === currentProject.project_id) {
+                        return project[0];
+                    }
+                    return prj;
+                });
+                setProjectList(newList);
+                return true;
+            })
+            .catch(err => err.json())
+        }
+    }
+
+    function deleteCurrentProject() {
+        fetch('http://localhost:4200/delproject', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ project_id: currentProject.project_id })
+        })
+        .then(res => res.json())
+        .then(data => {
+            setProjectList(projectList.filter((prj) => prj.project_id !== data[0].project_id));
+            setToDoList(toDoList.filter((todo) => todo.projectId !== data[0].project_id));
+            setDefaultProject();
+        })
+        .catch(err => err.json())
     }
     
     function saveSettings(updatedSettings) {
@@ -90,8 +133,8 @@ const SettingsContextProvider = (props) => {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(updatedSettings)
             })
-            .then(res => console.log(res.json()))
-            .catch(err => console.log)
+            .then(res => res.json())
+            .catch(err => err.json())
         }
         setTimerSettings(updatedSettings);
         saveCurrentTimer(updatedSettings);
@@ -182,7 +225,35 @@ const SettingsContextProvider = (props) => {
     }
 
   return (
-    <SettingContext.Provider value={{ currentTime, startTimerAnimation, startTimer, pauseTimer, stopTimer, resetTimer, saveSettings, timerSettings, time, timerKey, setTimerKey, toDoList, setToDoList, currentTask, setCurrentTask, projectList, setProjectList, currentProject, setCurrentProject, isLoggedIn, setIsLoggedIn, setDefaultProject, onLogin, saveNewProject, projectExists }}>
+    <SettingContext.Provider value={{ 
+        currentTime, 
+        startTimerAnimation, 
+        startTimer, 
+        pauseTimer, 
+        stopTimer, 
+        resetTimer, 
+        saveSettings, 
+        timerSettings, 
+        time, 
+        timerKey, 
+        setTimerKey, 
+        toDoList, 
+        setToDoList, 
+        currentTask, 
+        setCurrentTask, 
+        projectList, 
+        setProjectList, 
+        currentProject, 
+        setCurrentProject, 
+        isLoggedIn, 
+        setIsLoggedIn, 
+        setDefaultProject, 
+        onLogin, 
+        saveNewProject, 
+        projectExists, 
+        deleteCurrentProject,
+        updateCurrentProject
+    }}>
         {props.children}
     </SettingContext.Provider>
   )

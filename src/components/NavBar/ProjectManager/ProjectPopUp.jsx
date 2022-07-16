@@ -5,7 +5,7 @@ import { SettingContext } from '../../../context/SettingsContext';
 
 const ProjectPopUp = ({ toDelete, open, setOpen }) => {
 
-  const { projectList, setProjectList, projectExists, currentProject, toDoList, setToDoList, setDefaultProject, saveNewProject } = useContext(SettingContext);
+  const { projectExists, currentProject, saveNewProject, deleteCurrentProject } = useContext(SettingContext);
   const [inputText, setInputText] = useState('');
   const [showError, setShowError] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
@@ -34,6 +34,7 @@ const ProjectPopUp = ({ toDelete, open, setOpen }) => {
       }     
     } else {
       setShowInfo(true);
+      setShowError(false);
     }
 
   }
@@ -41,9 +42,7 @@ const ProjectPopUp = ({ toDelete, open, setOpen }) => {
   const handleDeleteProject = (e) => {
     e.preventDefault();
     if (inputText === currentProject.proj_name) {
-      setProjectList(projectList.filter((prj) => prj.project_id !== currentProject.project_id));
-      setToDoList(toDoList.filter((todo) => todo.projectId !== currentProject.project_id));
-      setDefaultProject();
+      deleteCurrentProject();
       setInputText('');
       setOpen(!open);
     } else {
