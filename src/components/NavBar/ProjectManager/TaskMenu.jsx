@@ -143,7 +143,7 @@ const TaskMenu = ({ callSignUp, isAuthenticated }) => {
             <div className="mt-1 mb-1">
                 <p className={ isAuthenticated ? 'logged-in' : ''}>Hint: <a href='#' className='signUpLink' onClick={callSignUp} >Sign Up for FREE</a> to save tasks after refresh</p>
             </div>
-            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} projectList={projectList} currentProject={currentProject} />
+            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} projectList={projectList} currentProject={currentProject}  />
             <ToDoList toDoList={toDoList} />
         </div>
     )
