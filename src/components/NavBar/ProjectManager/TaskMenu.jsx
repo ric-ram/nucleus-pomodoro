@@ -117,7 +117,7 @@ function SubMenu(props) {
 
 const TaskMenu = ({ isLoggedIn }) => {
 
-    const { toDoList, setToDoList, currentProject, projectList, setProjectList } = useContext(SettingContext);
+    const { toDoList, setToDoList, currentProject, projectList, setProjectList, addTaskToProject } = useContext(SettingContext);
     const [inputText, setInputText] = useState('');
     const [openSubMenu, setOpenSubMenu] = useState(false);
 
@@ -127,16 +127,10 @@ const TaskMenu = ({ isLoggedIn }) => {
 
     const handleSubmitTodo = (e) => {
         if(e.key !== 'Enter') { // allows enter but prevents refresh of the page
-            e.prevenprjefault()
+            e.preventDefault()
         }
-        setToDoList([
-            ...toDoList,
-            {
-                id: toDoList.length + 1,
-                task: inputText,
-                complete: false
-            }
-        ])
+        
+        addTaskToProject(inputText);
         setInputText('');
     }
 

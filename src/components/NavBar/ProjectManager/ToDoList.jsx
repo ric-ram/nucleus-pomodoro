@@ -4,7 +4,7 @@ import { useContext } from 'react'
 
 const ToDoList = ({ toDoList, setToDoList }) => {
 
-    const { currentProject } = useContext(SettingContext);
+    const { currentProject, deleteCompletedTasks } = useContext(SettingContext);
     
     const currentProjectTodo = () => {
        return toDoList.filter(el => el.project_id === currentProject.project_id);
@@ -15,14 +15,14 @@ const ToDoList = ({ toDoList, setToDoList }) => {
     }
 
     const handleDeleteCompletes = () => {
-        setToDoList(toDoList.filter(todo => todo.project_id === currentProject.project_id ? !todo.completed : todo));
+        deleteCompletedTasks();
     }
 
     return (
         <div className='todolist'>
             { currentProjectTodo().map(todo => {
                 return (
-                    <TaskToDo key={todo.project_id} todo={todo} toDoList={toDoList} setToDoList={setToDoList} />
+                    <TaskToDo  key={todo.task_id + todo.project_id} todo={todo} toDoList={toDoList} setToDoList={setToDoList} />
                 )
             })}
             { completedCount() !== 0 ? <a href='#' className='delete-completes' onClick={handleDeleteCompletes} >Delete completed tasks ({completedCount()})</a> : ''}

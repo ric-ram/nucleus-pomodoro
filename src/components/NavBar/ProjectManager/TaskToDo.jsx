@@ -8,10 +8,11 @@ import { useState } from 'react';
 
 const TaskToDo = ({ todo, toDoList, setToDoList }) => {
 
-    const { setCurrentTask } = useContext(SettingContext);
+    const { setCurrentTask, updateTask, deleteTask } = useContext(SettingContext);
 
-    const [checked, setChecked] = useState(todo.complete);
+    const [checked, setChecked] = useState(todo.completed);
     const [disabled, setDisabled] = useState(true);
+    const [inputText, setInputText] = useState(todo.task);
 
     const ref = useRef(null);
 
@@ -21,29 +22,11 @@ const TaskToDo = ({ todo, toDoList, setToDoList }) => {
         }
     }, [disabled])
 
-    const updateState = (field, value) => {
-        const newState = toDoList.map(td => {
-            if (td.task_id === todo.task_id) {
-                return {
-                    ...td,
-                    [field]: value
-                }
-            }
-            return td;
-        })
-
-        return newState;
-    }
-
     function handleChange() { 
         if (!checked) {
-            setToDoList(
-                updateState("completed", true)
-            )
+            updateTask(todo, "completed", true);
         } else {
-            setToDoList(
-                updateState("completed", false)
-            )
+            updateTask(todo, "completed", false);
         }
         setChecked(!checked);
     }
@@ -55,13 +38,16 @@ const TaskToDo = ({ todo, toDoList, setToDoList }) => {
     }
 
     function handleEdit(e) {
-        setToDoList(
-            updateState("task", e.target.value)
-        )
+        setInputText(e.target.value);
+    }
+
+    function handleClickSave() {
+        updateTask(todo, "task", inputText);
+        setDisabled(!disabled)
     }
 
     function handleDelete() {
-        setToDoList(toDoList.filter((el) => el.task_id !== todo.task_id));
+        deleteTask(todo);
     }
 
     function handleTaskSelect() {
@@ -85,12 +71,12 @@ const TaskToDo = ({ todo, toDoList, setToDoList }) => {
                     type="text" 
                     task_id="task" 
                     className={`task-name${checked ? " selected-task" : ""}`} 
-                    value={todo.task} 
+                    value={inputText} 
                     disabled={disabled} 
                     onChange={handleEdit} 
                     onKeyPress={handleEnter}/>
             </a>
-            <a href='#' className='edit' onClick={() => setDisabled(!disabled)} >{disabled ? "Edit" : "Save"}</a>
+            <a href='#' className='edit' onClick={handleClickSave} >{disabled ? "Edit" : "Save"}</a>
             <a href="#" className='deleteIcon' onClick={handleDelete}>{<DeleteIcon />}</a>
         </div>
     )
