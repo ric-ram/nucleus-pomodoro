@@ -6,7 +6,7 @@ import { SettingContext } from '../../../context/SettingsContext';
 import { useRef } from 'react';
 import { useState } from 'react';
 
-const TaskToDo = ({ todo, toDoList, setToDoList }) => {
+const TaskToDo = ({ todo }) => {
 
     const { setCurrentTask, updateTask, deleteTask } = useContext(SettingContext);
 

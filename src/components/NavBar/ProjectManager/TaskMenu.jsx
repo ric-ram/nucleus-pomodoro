@@ -97,7 +97,7 @@ function SubMenu(props) {
         <div className='mt-1 sub-menu'>
             <div ref={projectNode} href='#' className="select-proj" >
                 <div className="sub-menu-title-div" onClick={() => props.setOpen(!props.open)}>
-                    <SubMenuTitle disabled={disabled} setDisabled={setDisabled} value={props.currentProject.project_id === props.projectList[0].project_id ? 'Change Project' : props.currentProject.proj_name}  projectList={props.projectList} setProjectList={props.setProjectList} currentProject={props.currentProject} />
+                    <SubMenuTitle disabled={disabled} setDisabled={setDisabled} value={props.currentProject.project_id === props.projectList[0].project_id ? 'Change Project' : props.currentProject.proj_name}  projectList={props.projectList} currentProject={props.currentProject} />
 
                     
                 </div>
@@ -117,7 +117,7 @@ function SubMenu(props) {
 
 const TaskMenu = ({ isLoggedIn }) => {
 
-    const { toDoList, setToDoList, currentProject, projectList, setProjectList, addTaskToProject } = useContext(SettingContext);
+    const { toDoList, currentProject, projectList, addTaskToProject } = useContext(SettingContext);
     const [inputText, setInputText] = useState('');
     const [openSubMenu, setOpenSubMenu] = useState(false);
 
@@ -144,8 +144,8 @@ const TaskMenu = ({ isLoggedIn }) => {
             <div className="mt-1 mb-1">
                 <p className={ isLoggedIn ? 'logged-in' : ''}>Hint: <Link to="/signup" className='signUpLink' >Sign Up for FREE</Link> to save tasks after refresh</p>
             </div>
-            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} projectList={projectList} currentProject={currentProject} isLoggedIn={isLoggedIn}  setProjectList={setProjectList} />
-            <ToDoList toDoList={toDoList}  setToDoList={setToDoList} />
+            <SubMenu open={openSubMenu} setOpen={setOpenSubMenu} projectList={projectList} currentProject={currentProject} isLoggedIn={isLoggedIn} />
+            <ToDoList toDoList={toDoList} />
         </div>
     )
 }
