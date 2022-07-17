@@ -11,49 +11,49 @@ const SettingsMenu = ({ callSignUp, isAuthenticated, setParentState, timerSettin
       case 'work':
         saveTemp({
           ...tempSettings,
-          work: parseInt(value)
+          work_time: parseInt(value)
         });
         break;
       case 'short':
         saveTemp({
           ...tempSettings,
-          short: parseInt(value)
+          short_brk_time: parseInt(value)
         });
         break;
       case 'long':
         saveTemp({
           ...tempSettings,
-          long: parseInt(value)
+          long_brk_time: parseInt(value)
         });
         break;
       case 'shortFreq':
         saveTemp({
           ...tempSettings,
-          shortFreq: parseInt(value)
+          short_brk_freq: parseInt(value)
         });
         break;
       case 'longFreq':
         saveTemp({
           ...tempSettings,
-          longFreq: parseInt(value)
+          long_brk_freq: parseInt(value)
         });
         break;
       case 'notify': 
         saveTemp({
           ...tempSettings,
-          notify: !tempSettings.notify
+          show_notif: !tempSettings.show_notif
         });
         break;
       case 'showNotifyMin':
         saveTemp({
           ...tempSettings,
-          showNotifyMin: parseInt(value)
+          show_notif_at: parseInt(value)
         });
         break;
       case 'autoSwitch':
         saveTemp({
           ...tempSettings,
-          autoSwitch: !tempSettings.autoSwitch
+          auto_switch: !tempSettings.auto_switch
         });
         break;
       default: break;
@@ -89,27 +89,27 @@ const SettingsMenu = ({ callSignUp, isAuthenticated, setParentState, timerSettin
           <div className="stage-settings">
             <div className="stage-form">
               <label htmlFor="Work">Work</label>
-              <input type="number" id="work" name="work" onChange={handleChange} value={tempSettings.work} />
+              <input type="number" id="work" name="work" onChange={handleChange} value={tempSettings.work_time} />
             </div>
             <div className="stage-form">
               <label htmlFor="short break">Short Break</label>
-              <input type="number" id="short" name="short" onChange={handleChange} value={tempSettings.short} />
+              <input type="number" id="short" name="short" onChange={handleChange} value={tempSettings.short_brk_time} />
             </div>
             <div className="stage-form">
               <label htmlFor="long break">Long Break</label>
-              <input type="number" id="long" name="long" onChange={handleChange} value={tempSettings.long} />
+              <input type="number" id="long" name="long" onChange={handleChange} value={tempSettings.long_brk_time} />
             </div>
           </div>
           <div className="line"></div>
           <div className="break-settings">
             <div className="break-form mb-1">
               <label htmlFor="short break every">Short break every</label>
-              <input type="number" id="shorttime" name="shortFreq" onChange={handleChange} value={tempSettings.shortFreq}></input>
+              <input type="number" id="shorttime" name="shortFreq" onChange={handleChange} value={tempSettings.short_brk_freq}></input>
               <label>pomodoros</label>
             </div>
             <div className="break-form">
               <label htmlFor="long break every">Long break every</label>
-              <input type="number" id="longtime" name="longFreq" onChange={handleChange} value={tempSettings.longFreq}></input>
+              <input type="number" id="longtime" name="longFreq" onChange={handleChange} value={tempSettings.long_brk_freq}></input>
               <label>pomodoros</label>
             </div>
           </div>
@@ -118,13 +118,13 @@ const SettingsMenu = ({ callSignUp, isAuthenticated, setParentState, timerSettin
             <div className='switch-grid'>
               <label htmlFor="notification before timer ends" className="mr-1">Notification before timer ends</label>
               <label className="switch">
-                <input type="checkbox" name="notify" onChange={handleChange} checked={tempSettings.notify} />
+                <input type="checkbox" name="notify" onChange={handleChange} checked={tempSettings.show_notif} />
                 <span className="slider"></span>
               </label>
             </div>
             <div className="notif-form mt-1">
               <label htmlFor="show notification" className="mr-1" >Show notification</label>
-              <input type="number" id="notif-minutes" name="showNotifyMin" onChange={handleChange} value={tempSettings.showNotifyMin}/>
+              <input type="number" id="notif-minutes" name="showNotifyMin" onChange={handleChange} value={tempSettings.show_notif_at}/>
               <label className="ml-1">minutes before</label>
             </div>
           </div>
@@ -133,7 +133,7 @@ const SettingsMenu = ({ callSignUp, isAuthenticated, setParentState, timerSettin
             <div className='switch-grid'>
               <label htmlFor="auto switch to next phase" className="mr-1">Automatically switch to the next phase</label>
               <label className="switch">
-                <input type="checkbox" name="autoSwitch" onChange={handleChange} checked={tempSettings.autoSwitch} />
+                <input type="checkbox" name="autoSwitch" onChange={handleChange} checked={tempSettings.auto_switch} />
                 <span className="slider"></span>
               </label>
             </div>

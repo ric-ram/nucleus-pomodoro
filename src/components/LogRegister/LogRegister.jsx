@@ -25,12 +25,13 @@ const Selector = (props) => {
 
 const LogRegister = ({ isSignUp }) => {
 
-    const { setIsLoggedIn } = useContext(SettingContext);
+    const { setIsLoggedIn, onLogin } = useContext(SettingContext);
 
     let navigate = useNavigate();
 
     const handleOnSubmit = () => {
         setIsLoggedIn(true);
+        onLogin();
         navigate("/");
     }
     

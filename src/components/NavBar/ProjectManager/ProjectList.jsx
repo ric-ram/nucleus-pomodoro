@@ -9,10 +9,10 @@ const ProjectList = ({ isLogged }) => {
   return (
     <div className='projects'>
         { !isLogged ? 
-            <Project key={projectList[0].id} project={projectList[0]} />
+            <Project key={projectList[0].project_id} project={projectList[0]} />
         : projectList.map(proj => {
             return (
-                <Project key={proj.id} project={proj} />
+                <Project key={proj.project_id} project={proj} />
             )
         }) }
     </div>

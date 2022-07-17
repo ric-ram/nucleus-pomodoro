@@ -13,8 +13,8 @@ const Project = ({ project }) => {
         <button 
         type="button"   
         onClick={handleOnClick}
-        className={currentProject.id === project.id ? 'selected' : ''}>
-            {currentProject.id === project.id ? <>{project.project}<i> (current)</i></> : project.project}
+        className={currentProject.project_id === project.project_id ? 'selected' : ''}>
+            {currentProject.project_id === project.project_id ? <>{project.proj_name}<i> (current)</i></> : project.proj_name}
         </button>
     )
 }

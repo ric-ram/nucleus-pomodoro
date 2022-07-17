@@ -5,40 +5,44 @@ import { SettingContext } from '../../../context/SettingsContext';
 
 const ProjectPopUp = ({ toDelete, open, setOpen }) => {
 
-  const { projectList, setProjectList, currentProject, toDoList, setToDoList, setDefaultProject } = useContext(SettingContext);
+  const { projectExists, currentProject, saveNewProject, deleteCurrentProject } = useContext(SettingContext);
   const [inputText, setInputText] = useState('');
+  const [showError, setShowError] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
 
   const handleOnChange = (e) => {
     setInputText(e.target.value);
   }
 
-  const handleSubmitProject = (e) => {
+  const handleSubmitProject = async (e) => {
     e.preventDefault();
     if (inputText.length >= 3) {
-      console.log(inputText)
-      setProjectList([
-        ...projectList,
-        {
-          id: projectList.length + 1,
-          project: inputText
-        }
-      ])
+      const newProject = {
+        user_id: 'test',
+        proj_name: inputText
+      };
       
-      setInputText('');
-      setOpen(!open);
+      const exists = projectExists(newProject);
+
+      if (!exists) {
+        saveNewProject(newProject);
+        setShowError(false);
+        setInputText('');
+        setOpen(!open);
+      } else {
+        setShowError(true);
+      }     
     } else {
       setShowInfo(true);
+      setShowError(false);
     }
 
   }
 
   const handleDeleteProject = (e) => {
     e.preventDefault();
-    if (inputText === currentProject.project) {
-      setProjectList(projectList.filter((prj) => prj.id !== currentProject.id));
-      setToDoList(toDoList.filter((todo) => todo.projectId !== currentProject.id));
-      setDefaultProject();
+    if (inputText === currentProject.proj_name) {
+      deleteCurrentProject();
       setInputText('');
       setOpen(!open);
     } else {
@@ -58,12 +62,13 @@ const ProjectPopUp = ({ toDelete, open, setOpen }) => {
             <button type='button' className='close-button' onClick={handleClose}>{<CloseIcon />}</button>
             <input 
               type="text" 
-              id="newproject" 
+              project_id="newproject" 
               placeholder="New Project" 
               className="project-input" 
               onChange={handleOnChange}
               value={inputText} />
 
+            {showError && <p className='info'>The Project already exists! Please enter a new Project name.</p>}
             {showInfo && <p className='info'>Please insert a Project name with 3 or more characters please.</p>}
             <button type='submit' className='submit' >Create</button>
         </form>
@@ -73,12 +78,12 @@ const ProjectPopUp = ({ toDelete, open, setOpen }) => {
       <form onSubmit={handleDeleteProject} className='popup-placeholder'>
           <h2>Warning!</h2>
           <p>Are you sure you want to delete this project?<br></br>You will be deleting all task associated with it.</p>
-          <p className="info">Please enter the project name to delete. <i>Ex: "{currentProject.project}"</i></p>
+          <p className="info">Please enter the project name to delete. <i>Ex: "{currentProject.proj_name}"</i></p>
           <button type='button' className='close-button' onClick={handleClose}>{<CloseIcon />}</button>
           <input 
             type="text" 
-            id="newproject" 
-            placeholder={currentProject.project} 
+            project_id="newproject" 
+            placeholder={currentProject.proj_name} 
             className="delete-input" 
             onChange={handleOnChange}
             value={inputText} />
