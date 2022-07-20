@@ -67,7 +67,7 @@ const SettingsContextProvider = (props) => {
 
     function onLogin() {
         const headers = { 'Content-Type': 'application/json' }
-        fetch('http://localhost:4200/getdata?user_id=test', { headers })
+        fetch('https://radiant-ridge-57401.herokuapp.com/getdata?user_id=test', { headers })
             .then(resp => resp.json())
             .then(data => {
                 setTimerSettings(data.settings[0]);
@@ -80,7 +80,7 @@ const SettingsContextProvider = (props) => {
 
     function saveSettings(updatedSettings) {
         if (isLoggedIn && !_.isEqual(timerSettings, updatedSettings)) {
-            fetch('http://localhost:4200/updatesettings', {
+            fetch('https://radiant-ridge-57401.herokuapp.com/updatesettings', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(updatedSettings)
@@ -103,7 +103,7 @@ const SettingsContextProvider = (props) => {
     function saveNewProject(newProject) {
         console.log(newProject)
         if (isLoggedIn) {
-            fetch('http://localhost:4200/addproject', {
+            fetch('https://radiant-ridge-57401.herokuapp.com/addproject', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newProject)
@@ -130,7 +130,7 @@ const SettingsContextProvider = (props) => {
                 proj_name: projectName
             }
 
-            fetch('http://localhost:4200/updateproject', {
+            fetch('https://radiant-ridge-57401.herokuapp.com/updateproject', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newProject)
@@ -151,7 +151,7 @@ const SettingsContextProvider = (props) => {
     }
 
     function deleteCurrentProject() {
-        fetch('http://localhost:4200/delproject', {
+        fetch('https://radiant-ridge-57401.herokuapp.com/delproject', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ project_id: currentProject.project_id })
@@ -172,7 +172,7 @@ const SettingsContextProvider = (props) => {
                 task: taskName
             }
 
-            fetch('http://localhost:4200/addtask', {
+            fetch('https://radiant-ridge-57401.herokuapp.com/addtask', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newTask)
@@ -208,7 +208,7 @@ const SettingsContextProvider = (props) => {
         }
 
         if (isLoggedIn) {
-            fetch('http://localhost:4200/updatetask', {
+            fetch('https://radiant-ridge-57401.herokuapp.com/updatetask', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(updatedTask)
@@ -239,7 +239,7 @@ const SettingsContextProvider = (props) => {
 
     function deleteTask(task) {
         if (isLoggedIn) {
-            fetch('http://localhost:4200/deltask', {
+            fetch('https://radiant-ridge-57401.herokuapp.com/deltask', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -259,7 +259,7 @@ const SettingsContextProvider = (props) => {
 
     function deleteCompletedTasks() {
         if (isLoggedIn) {
-            fetch('http://localhost:4200/delcompletedtasks', {
+            fetch('https://radiant-ridge-57401.herokuapp.com/delcompletedtasks', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
