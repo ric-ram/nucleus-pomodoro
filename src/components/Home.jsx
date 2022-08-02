@@ -7,9 +7,15 @@ import TaskTextButton from './NavBar/ProjectManager/TaskTextButton';
 import Timer from './Timer/Timer';
 
 const Home = () => {
-    const { currentTime, startTimerAnimation, stopTimer, timerSettings, saveSettings, time, timerKey, currentTask } = useContext(SettingContext);
+    const { currentTime, startTimerAnimation, stopTimer, timerSettings, saveSettings, time, timerKey, currentTask, isAuthenticated, onAuthenticate, firstTime } = useContext(SettingContext);
 
-    useEffect(() => {saveSettings(timerSettings)}, [timerSettings, stopTimer])
+    useEffect(() => {
+        if (isAuthenticated && firstTime) {
+            onAuthenticate()
+        } else {
+            saveSettings(timerSettings)
+        }
+    }, [timerSettings, stopTimer])
 
     return (
         <>

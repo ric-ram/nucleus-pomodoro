@@ -1,18 +1,14 @@
 import { SettingContext } from './../../../context/SettingsContext';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ProfileMenu = ({ callSignUp, isAuthenticated, setOpen, user }) => {
 
     const { callLogin, logout } = useContext(SettingContext);
-    
-    //let navigate = useNavigate();
+
 
     const handleLogout = () => {
         setOpen(false);
-        logout();
-        //setIsLoggedIn(false);
-        //navigate("/");
+        logout({ returnTo: window.location.origin });
     }
 
     if(!isAuthenticated) {

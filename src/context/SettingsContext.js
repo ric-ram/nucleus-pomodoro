@@ -1,7 +1,6 @@
 import React, { createContext, useState } from 'react';
 
 import _ from 'lodash';
-import axios from 'axios';
 import timerComplete from '../audio/timerComplete.wav';
 import timerLeftSound from '../audio/tickingClock.wav';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -13,19 +12,18 @@ const SettingsContextProvider = (props) => {
 
     const { loginWithRedirect, 
         isAuthenticated, 
+        getAccessTokenSilently,
         logout,
-        getAccessTokenSilently, 
         user 
     } = useAuth0();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [firstTime, setfirstTime] = useState(true);
 
     const audioTimerLeft = new Audio(timerLeftSound);
     const audioTimerComplete = new Audio(timerComplete);
 
     const [projectList, setProjectList] = useState([{
         project_id: 0,
-        user_id: 0,
         proj_name: 'Default Project'
     }]);
     const [currentProject, setCurrentProject] = useState(projectList[0])
@@ -37,7 +35,6 @@ const SettingsContextProvider = (props) => {
     const [timerKey, setTimerKey] = useState(0);
     const [startTimerAnimation, setStartTimerAnimation] = useState(false);
     const [timerSettings, setTimerSettings] = useState({
-        user_id: 0,
         settings_id: 0,
         work_time: 10,
         short_brk_time: 2,
@@ -52,6 +49,7 @@ const SettingsContextProvider = (props) => {
     });
 
     function callLogin() {
+        console.log('login')
         loginWithRedirect();
         // axios.get('http://localhost:4200/login')
         // .then(resp => console.log(resp.data))
@@ -65,28 +63,53 @@ const SettingsContextProvider = (props) => {
         // .catch(e => console.log(e.message));
     }
 
-    function onLogin() {
-        const headers = { 'Content-Type': 'application/json' }
-        fetch('https://radiant-ridge-57401.herokuapp.com/getdata?user_id=test', { headers })
+    async function createHeader() {
+        try {
+            const token = await getAccessTokenSilently(); 
+            const headers = { 
+                'Content-Type': 'application/json', 
+                authorization: `Bearer ${token}`
+            }
+            return headers;
+        } catch (error) {
+            throw new Error(`${error.message}`);
+        }
+    } 
+
+    function onAuthenticate() {
+        createHeader()
+        .then(headers => {
+            fetch(`https://radiant-ridge-57401.herokuapp.com/getdata`, { headers })
             .then(resp => resp.json())
             .then(data => {
                 setTimerSettings(data.settings[0]);
                 setProjectList(data.projects);
                 setCurrentProject(data.projects[0]);
                 setToDoList(data.tasks);
+                setfirstTime(false);
             })
             .catch(err => err.json());
+        })
+        .catch(err => {
+            throw new Error(`${err.message}`)
+        })
     }
 
     function saveSettings(updatedSettings) {
-        if (isLoggedIn && !_.isEqual(timerSettings, updatedSettings)) {
-            fetch('https://radiant-ridge-57401.herokuapp.com/updatesettings', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(updatedSettings)
+        if (isAuthenticated && !_.isEqual(timerSettings, updatedSettings)) {
+            createHeader()
+            .then(headers => {
+                fetch('https://radiant-ridge-57401.herokuapp.com/updatesettings', {
+                    method: 'post',
+                    headers: headers,
+                    body: JSON.stringify(updatedSettings)
+                })
+                .then(res => res.json())
+                .catch(err => err.json())
             })
-            .then(res => res.json())
-            .catch(err => err.json())
+            .catch(err => {
+                throw new Error(`${err.message}`)
+            })
         }
         setTimerSettings(updatedSettings);
         saveCurrentTimer(updatedSettings);
@@ -101,90 +124,112 @@ const SettingsContextProvider = (props) => {
     }
 
     function saveNewProject(newProject) {
-        console.log(newProject)
-        if (isLoggedIn) {
-            fetch('https://radiant-ridge-57401.herokuapp.com/addproject', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(newProject)
+        if (isAuthenticated) {
+            createHeader()
+            .then(headers => {
+                fetch('https://radiant-ridge-57401.herokuapp.com/addproject', {
+                    method: 'post',
+                    headers: headers,
+                    body: JSON.stringify(newProject)
+                })
+                .then(res => res.json())
+                .then(project => {
+                    setProjectList([
+                        ...projectList,
+                        project[0]
+                    ])
+                    return true;
+                })
+                .catch(err => err.json())
             })
-            .then(res => res.json())
-            .then(project => {
-                setProjectList([
-                    ...projectList,
-                    project[0]
-                ])
-                return true;
+            .catch(err => {
+                throw new Error(`${err.message}`)
             })
-            .catch(err => err.json())
         } else {
             return false;
         }
     }
 
     function updateCurrentProject(projectName) {
-        if (isLoggedIn) {
+        if (isAuthenticated) {
             const newProject = {
-                user_id: currentProject.user_id,
                 project_id: currentProject.project_id,
                 proj_name: projectName
             }
 
-            fetch('https://radiant-ridge-57401.herokuapp.com/updateproject', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(newProject)
+            createHeader()
+            .then(headers => {
+                fetch('https://radiant-ridge-57401.herokuapp.com/updateproject', {
+                    method: 'post',
+                    headers: headers,
+                    body: JSON.stringify(newProject)
+                })
+                .then(res => res.json())
+                .then(project => {
+                    const newList = projectList.map(todo => {
+                        if (todo.project_id === currentProject.project_id) {
+                            return project[0];
+                        }
+                        return todo;
+                    });
+                    setProjectList(newList);
+                    return true;
+                })
+                .catch(err => err.json())
             })
-            .then(res => res.json())
-            .then(project => {
-                const newList = projectList.map(todo => {
-                    if (todo.project_id === currentProject.project_id) {
-                        return project[0];
-                    }
-                    return todo;
-                });
-                setProjectList(newList);
-                return true;
+            .catch(err => {
+                throw new Error(`${err.message}`)
             })
-            .catch(err => err.json())
         }
     }
 
     function deleteCurrentProject() {
-        fetch('https://radiant-ridge-57401.herokuapp.com/delproject', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ project_id: currentProject.project_id })
+        createHeader()
+        .then(headers => {
+            fetch('https://radiant-ridge-57401.herokuapp.com/delproject', {
+                method: 'post',
+                headers: headers,
+                body: JSON.stringify({ project_id: currentProject.project_id })
+            })
+            .then(res => res.json())
+            .then(data => {
+                setProjectList(projectList.filter((todo) => todo.project_id !== data[0].project_id));
+                setToDoList(toDoList.filter((todo) => todo.projectId !== data[0].project_id));
+                setDefaultProject();
+            })
+            .catch(err => err.json())
         })
-        .then(res => res.json())
-        .then(data => {
-            setProjectList(projectList.filter((todo) => todo.project_id !== data[0].project_id));
-            setToDoList(toDoList.filter((todo) => todo.projectId !== data[0].project_id));
-            setDefaultProject();
+        .catch(err => {
+            throw new Error(`${err.message}`)
         })
-        .catch(err => err.json())
     }
 
     function addTaskToProject(taskName) {   
-        if (isLoggedIn) {
+        if (isAuthenticated) {
             const newTask = {
                 project_id: currentProject.project_id,
                 task: taskName
             }
 
-            fetch('https://radiant-ridge-57401.herokuapp.com/addtask', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(newTask)
+            createHeader()
+            .then(headers => {
+                fetch('https://radiant-ridge-57401.herokuapp.com/addtask', {
+                    method: 'post',
+                    headers: headers,
+                    body: JSON.stringify(newTask)
+                })
+                .then(res => res.json())
+                .then(task => {
+                    setToDoList([
+                        ...toDoList,
+                        task[0]
+                    ])
+                })
+                .catch(err => err.json())
             })
-            .then(res => res.json())
-            .then(task => {
-                setToDoList([
-                    ...toDoList,
-                    task[0]
-                ])
+            .catch(err => {
+                throw new Error(`${err.message}`)
             })
-            .catch(err => err.json())
         } else {
             setToDoList([
                 ...toDoList,
@@ -207,24 +252,30 @@ const SettingsContextProvider = (props) => {
             [task_field]: value
         }
 
-        if (isLoggedIn) {
-            fetch('https://radiant-ridge-57401.herokuapp.com/updatetask', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(updatedTask)
+        if (isAuthenticated) {
+            createHeader()
+            .then(headers => {
+                fetch('https://radiant-ridge-57401.herokuapp.com/updatetask', {
+                    method: 'post',
+                    headers: headers,
+                    body: JSON.stringify(updatedTask)
+                })
+                .then(res => res.json())
+                .then(updatedTodo => {
+                    const updatedTodoList = toDoList.map(todo => {
+                        if (todo.task_id === task.task_id) {
+                            return updatedTodo[0];
+                        }
+                        return todo;
+                    });
+    
+                    setToDoList(updatedTodoList);
+                })
+                .catch(err => err.json())
             })
-            .then(res => res.json())
-            .then(updatedTodo => {
-                const updatedTodoList = toDoList.map(todo => {
-                    if (todo.task_id === task.task_id) {
-                        return updatedTodo[0];
-                    }
-                    return todo;
-                });
-
-                setToDoList(updatedTodoList);
+            .catch(err => {
+                throw new Error(`${err.message}`)
             })
-            .catch(err => err.json())
         } else {
             const updatedTodoList = toDoList.map(todo => {
                 if (todo.task_id === task.task_id) {
@@ -238,36 +289,48 @@ const SettingsContextProvider = (props) => {
     }
 
     function deleteTask(task) {
-        if (isLoggedIn) {
-            fetch('https://radiant-ridge-57401.herokuapp.com/deltask', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    task_id: task.task_id,
-                    project_id: task.project_id
+        if (isAuthenticated) {
+            createHeader()
+            .then(headers => {
+                fetch('https://radiant-ridge-57401.herokuapp.com/deltask', {
+                    method: 'post',
+                    headers: headers,
+                    body: JSON.stringify({
+                        task_id: task.task_id,
+                        project_id: task.project_id
+                    })
                 })
+                .then(res => res.json())
+                .then(data => {
+                    setToDoList(toDoList.filter(el => el.task_id !== data[0].task_id));
+                })
+                .catch(err => err.json())
             })
-            .then(res => res.json())
-            .then(data => {
-                setToDoList(toDoList.filter(el => el.task_id !== data[0].task_id));
+            .catch(err => {
+                throw new Error(`${err.message}`)
             })
-            .catch(err => err.json())
         } else {
             setToDoList(toDoList.filter((el) => el.task_id !== task.task_id));
         }
     }
 
     function deleteCompletedTasks() {
-        if (isLoggedIn) {
-            fetch('https://radiant-ridge-57401.herokuapp.com/delcompletedtasks', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    project_id: currentProject.project_id
+        if (isAuthenticated) {
+            createHeader()
+            .then(headers => {
+                fetch('https://radiant-ridge-57401.herokuapp.com/delcompletedtasks', {
+                    method: 'post',
+                    headers: headers,
+                    body: JSON.stringify({
+                        project_id: currentProject.project_id
+                    })
                 })
+                .then(res => res.json())
+                .catch(err => err.json())
             })
-            .then(res => res.json())
-            .catch(err => err.json())
+            .catch(err => {
+                throw new Error(`${err.message}`)
+            })
         }
 
         setToDoList(toDoList.filter(todo => todo.project_id === currentProject.project_id ? !todo.completed : todo));
@@ -376,9 +439,7 @@ const SettingsContextProvider = (props) => {
         projectList, 
         currentProject, 
         setCurrentProject, 
-        isLoggedIn, 
-        setIsLoggedIn, 
-        onLogin, 
+        onAuthenticate, 
         saveNewProject, 
         projectExists, 
         deleteCurrentProject,
@@ -391,7 +452,8 @@ const SettingsContextProvider = (props) => {
         callSignUp, 
         isAuthenticated, 
         logout, 
-        user
+        user,
+        firstTime
     }}>
         {props.children}
     </SettingContext.Provider>

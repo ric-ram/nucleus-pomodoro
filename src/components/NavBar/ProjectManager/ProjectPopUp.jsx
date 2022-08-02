@@ -5,7 +5,7 @@ import { SettingContext } from '../../../context/SettingsContext';
 
 const ProjectPopUp = ({ toDelete, open, setOpen }) => {
 
-  const { projectExists, currentProject, saveNewProject, deleteCurrentProject } = useContext(SettingContext);
+  const { projectExists, currentProject, saveNewProject, deleteCurrentProject, user } = useContext(SettingContext);
   const [inputText, setInputText] = useState('');
   const [showError, setShowError] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
@@ -18,7 +18,6 @@ const ProjectPopUp = ({ toDelete, open, setOpen }) => {
     e.preventDefault();
     if (inputText.length >= 3) {
       const newProject = {
-        user_id: 'test',
         proj_name: inputText
       };
       
