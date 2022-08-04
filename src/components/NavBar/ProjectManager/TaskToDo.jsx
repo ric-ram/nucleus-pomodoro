@@ -42,7 +42,9 @@ const TaskToDo = ({ todo }) => {
     }
 
     function handleClickSave() {
-        updateTask(todo, "task", inputText);
+        if (!disabled) {
+            updateTask(todo, "task", inputText);
+        }
         setDisabled(!disabled)
     }
 
@@ -52,7 +54,7 @@ const TaskToDo = ({ todo }) => {
 
     function handleTaskSelect() {
         if (disabled) {
-            setCurrentTask(todo.task);
+            setCurrentTask(todo);
         }
     }
 

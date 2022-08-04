@@ -9,7 +9,7 @@ const ProjectsMenu = ({ isAuthenticated }) => {
 
   return (
     <div className="project-menu">
-        <ProjectList isLogged={isAuthenticated} />
+        <ProjectList isAuthenticated={isAuthenticated} />
         <div className="proj-line"></div>
         <div  className='add-proj'>
             <a href='#' onClick={() => isAuthenticated && setOpen(!open)}>

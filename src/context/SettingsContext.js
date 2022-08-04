@@ -29,7 +29,13 @@ const SettingsContextProvider = (props) => {
     const [currentProject, setCurrentProject] = useState(projectList[0])
 
     const [toDoList, setToDoList] = useState([]);
-    const [currentTask, setCurrentTask] = useState('Click here to create a task');
+    const [currentTask, setCurrentTask] = useState({
+        task_id: 0,
+        project_id: -1,
+        task: 'Click here to create a task',
+        total_pomodoros: 0,
+        completed: false
+    });
 
     const [currentTime, setCurrentTime] = useState(0);
     const [timerKey, setTimerKey] = useState(0);
@@ -83,8 +89,8 @@ const SettingsContextProvider = (props) => {
             .then(resp => resp.json())
             .then(data => {
                 setTimerSettings(data.settings[0]);
-                setProjectList(data.projects);
-                setCurrentProject(data.projects[0]);
+                setProjectList(data.projects.flat());
+                setCurrentProject(data.projects[0][0]);
                 setToDoList(data.tasks);
                 setfirstTime(false);
             })
@@ -252,6 +258,18 @@ const SettingsContextProvider = (props) => {
             [task_field]: value
         }
 
+        const update = (updatedTask) => {
+            const updatedTodoList = toDoList.map(todo => {
+                if (todo.task_id === task.task_id) {
+                    return updatedTask;
+                }
+                return todo;
+            })
+
+            setToDoList(updatedTodoList);
+            setCurrentTask(updatedTask);
+        }
+
         if (isAuthenticated) {
             createHeader()
             .then(headers => {
@@ -262,14 +280,7 @@ const SettingsContextProvider = (props) => {
                 })
                 .then(res => res.json())
                 .then(updatedTodo => {
-                    const updatedTodoList = toDoList.map(todo => {
-                        if (todo.task_id === task.task_id) {
-                            return updatedTodo[0];
-                        }
-                        return todo;
-                    });
-    
-                    setToDoList(updatedTodoList);
+                    update(updatedTodo[0]);
                 })
                 .catch(err => err.json())
             })
@@ -277,14 +288,7 @@ const SettingsContextProvider = (props) => {
                 throw new Error(`${err.message}`)
             })
         } else {
-            const updatedTodoList = toDoList.map(todo => {
-                if (todo.task_id === task.task_id) {
-                    return updatedTask;
-                }
-                return todo;
-            })
-
-            setToDoList(updatedTodoList);
+            update(updatedTask);
         }
     }
 
