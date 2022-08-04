@@ -164,8 +164,13 @@ input {
                 transform: translateX(18.5px);
             }
         }
-    }
 
+    }
+    
+    .phase-div {
+        margin-left: 1rem;
+    }
+    
     .set-btns {
         display: flex;
         justify-content: flex-end;

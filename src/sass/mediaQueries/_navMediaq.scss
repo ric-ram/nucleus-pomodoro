@@ -129,7 +129,7 @@
         }
     }
 
-    .delete-completes, .task-name, .edit {
+    .delete-completes, .task-name, .edit, .sub-menu-title {
         font-size: 0.875rem;
     }
 
@@ -169,7 +169,7 @@
             right: 1.45rem;
         }
 
-        .stage-form, .break-form, .notif-settings, .ml-1 {
+        .stage-form, .break-form, .notif-settings, .phase-div {
             label {
                 font-size: 0.75rem;
             }
@@ -215,7 +215,7 @@
 
     // Profile Menu 
     .profile-menu-logged-off {
-        min-height: 8rem;
+        width: 7.6875rem;
         height: 4.6875rem;
         top: 5.75rem;
         padding: 0.75rem 0.625rem;

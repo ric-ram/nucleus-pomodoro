@@ -129,7 +129,7 @@ const SettingsMenu = ({ callSignUp, isAuthenticated, setParentState, timerSettin
             </div>
           </div>
           <div className="line"></div>
-          <div className="ml-1">
+          <div className="phase-div">
             <div className='switch-grid'>
               <label htmlFor="auto switch to next phase" className="mr-1">Automatically switch to the next phase</label>
               <label className="switch">
