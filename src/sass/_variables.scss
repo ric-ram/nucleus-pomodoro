@@ -12,6 +12,7 @@ $slider-bg: hsl(178, 18%, 31%);
 $selected-white: hsla(0, 0%, 85%, 0.1);
 $banner-green: hsl(176, 21%, 27%);
 $deselected-button: hsla(177, 90%, 8%, 0.5);
+$red: hsl(0, 86%, 36%);
 
 //shadow colours
 $dark-shadow: hsla(0, 0%, 0%, 0.25);
@@ -22,6 +23,7 @@ $green-switch-shadow: hsla(177, 20%, 45%, 0.25);
 
 //drop-shadow
 $elem-shadow: -5px -5px 10px $green-shadow, 5px 5px 10px $dark-shadow;
+$btn-shadow: -2.5px -2.5px 5px $green-shadow, 2.5px 2.5px 5px $dark-shadow;
 $text-shadow: -5px -5px 10px $text-green-shadow, 5px 5px 10px $text-dark-shadow;
 $slider-bg-shadow: -5px -5px 10px $green-switch-shadow, 5px 5px 10px $dark-shadow, inset 1px 1px 2px $dark-shadow;
 $slider-ball-shadow: -2px -2px 4px $green-switch-shadow, 2px 2px 4px $dark-shadow, inset -2px -2px 4px $dark-shadow;

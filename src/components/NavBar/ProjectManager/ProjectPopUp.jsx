@@ -5,7 +5,7 @@ import { SettingContext } from '../../../context/SettingsContext';
 
 const ProjectPopUp = ({ toDelete, open, setOpen }) => {
 
-  const { projectExists, currentProject, saveNewProject, deleteCurrentProject, user } = useContext(SettingContext);
+  const { projectExists, currentProject, saveNewProject, deleteCurrentProject } = useContext(SettingContext);
   const [inputText, setInputText] = useState('');
   const [showError, setShowError] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
@@ -55,7 +55,7 @@ const ProjectPopUp = ({ toDelete, open, setOpen }) => {
   }
 
   return (open && !toDelete) ? (
-    <div className='project-popup'>
+    <div className='popup'>
         <form onSubmit={handleSubmitProject} className='popup-placeholder'>
             <h3>Create New Project</h3>
             <button type='button' className='close-button' onClick={handleClose}>{<CloseIcon />}</button>
@@ -67,13 +67,13 @@ const ProjectPopUp = ({ toDelete, open, setOpen }) => {
               onChange={handleOnChange}
               value={inputText} />
 
-            {showError && <p className='info'>The Project already exists! Please enter a new Project name.</p>}
-            {showInfo && <p className='info'>Please insert a Project name with 3 or more characters please.</p>}
+            {showError && <p className='project-error'>The Project already exists! Please enter a new Project name.</p>}
+            {showInfo && <p className='project-info'>Please insert a Project name with 3 or more characters please.</p>}
             <button type='submit' className='submit' >Create</button>
         </form>
     </div>
   ) : (open && toDelete) ? (
-    <div className='project-popup'>
+    <div className='popup'>
       <form onSubmit={handleDeleteProject} className='popup-placeholder'>
           <h2>Warning!</h2>
           <p>Are you sure you want to delete this project?<br></br>You will be deleting all task associated with it.</p>

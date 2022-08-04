@@ -1,10 +1,23 @@
+import ProfilePopUp from './ProfilePopUp';
 import { SettingContext } from './../../../context/SettingsContext';
 import { useContext } from 'react';
+import { useState } from 'react';
 
 const ProfileMenu = ({ callSignUp, isAuthenticated, setOpen, user }) => {
 
     const { callLogin, logout } = useContext(SettingContext);
+    const [openPopUp, setOpenPopUp] =  useState(false);
+    const [toDelete, setToDelete] = useState(false);
 
+    const handleResetPassword = () => {
+        setToDelete(false);
+        setOpenPopUp(true);
+    }
+
+    const handleDeleteAccount = () => {
+        setToDelete(true);
+        setOpenPopUp(true);
+    }
 
     const handleLogout = () => {
         setOpen(false);
@@ -19,15 +32,15 @@ const ProfileMenu = ({ callSignUp, isAuthenticated, setOpen, user }) => {
           </div>
         )
     } else {
-        console.log(JSON.stringify(user, null, 2))
         return (
             <div className="profile-menu-logged-in" >
               <p className="ml-1 mt-1 mr-1">{user.email}</p>
               <div className="small-line"></div>
-              <button className="astext ml-1">Reset Password</button>
-              <button className="astext  ml-1">Delete Account</button>
+              <button className="astext ml-1" onClick={handleResetPassword} >Reset Password</button>
+              <button className="astext  ml-1" onClick={handleDeleteAccount} >Delete Account</button>
               <div className="small-line"></div>
               <button onClick={handleLogout} className="astext ml-1">Logout</button>
+              <ProfilePopUp toDelete={toDelete} open={openPopUp} setOpen={setOpenPopUp} />
             </div>
         )
     }
