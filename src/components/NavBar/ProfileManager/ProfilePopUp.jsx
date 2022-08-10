@@ -2,21 +2,26 @@ import { ReactComponent as CautionIcon } from '../../../icons/cautionIcon.svg';
 import { ReactComponent as CloseIcon } from '../../../icons/closeIcon.svg';
 import { ReactComponent as InfoIcon } from '../../../icons/infoIcon.svg';
 import React from 'react'
+import { SettingContext } from './../../../context/SettingsContext';
+import { useContext } from 'react';
 
 const ProfilePopUp = ({ toDelete, open, setOpen }) => {
+    const { resetPassword, deleteUser, logout } = useContext(SettingContext);
+
     const handleClose = () => {
         setOpen(!open);
     }
 
     const handleSubmitReset = (e) => {
         e.preventDefault();
-        console.log('Reset Password');
+        resetPassword();
         setOpen(!open);
     }
 
     const handleSubmitDelete = (e) => {
         e.preventDefault();
-        console.log('Delete Account');
+        deleteUser();
+        logout();
         setOpen(!open);
     }
 

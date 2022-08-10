@@ -85,7 +85,7 @@ const SettingsContextProvider = (props) => {
     function onAuthenticate() {
         createHeader()
         .then(headers => {
-            fetch(`https://radiant-ridge-57401.herokuapp.com/getdata`, { headers })
+            fetch(`${process.env.REACT_APP_API_URI}/getdata`, { headers })
             .then(resp => resp.json())
             .then(data => {
                 setTimerSettings(data.settings[0]);
@@ -101,11 +101,45 @@ const SettingsContextProvider = (props) => {
         })
     }
 
+    function resetPassword() {
+        if (isAuthenticated) {
+            createHeader()
+            .then(headers => {
+                fetch(`${process.env.REACT_APP_API_URI}/resetpwd`, {
+                    method: 'POST',
+                    headers: headers
+                })
+                .then(res => res.json())
+                .catch(err => err.json())
+            })
+            .catch(err => {
+                throw new Error(`${err.message}`)
+            })
+        }
+    }
+
+    function deleteUser() {
+        if (isAuthenticated) {
+            createHeader()
+            .then(headers => {
+                fetch(`${process.env.REACT_APP_API_URI}/deluser`, {
+                    method: 'POST',
+                    headers: headers
+                })
+                .then(res => res.json())
+                .catch(err => err.json())
+            })
+            .catch(err => {
+                throw new Error(`${err.message}`)
+            })
+        }
+    }
+
     function saveSettings(updatedSettings) {
         if (isAuthenticated && !_.isEqual(timerSettings, updatedSettings)) {
             createHeader()
             .then(headers => {
-                fetch('https://radiant-ridge-57401.herokuapp.com/updatesettings', {
+                fetch(`${process.env.REACT_APP_API_URI}/updatesettings`, {
                     method: 'post',
                     headers: headers,
                     body: JSON.stringify(updatedSettings)
@@ -133,7 +167,7 @@ const SettingsContextProvider = (props) => {
         if (isAuthenticated) {
             createHeader()
             .then(headers => {
-                fetch('https://radiant-ridge-57401.herokuapp.com/addproject', {
+                fetch(`${process.env.REACT_APP_API_URI}/addproject`, {
                     method: 'post',
                     headers: headers,
                     body: JSON.stringify(newProject)
@@ -165,7 +199,7 @@ const SettingsContextProvider = (props) => {
 
             createHeader()
             .then(headers => {
-                fetch('https://radiant-ridge-57401.herokuapp.com/updateproject', {
+                fetch(`${process.env.REACT_APP_API_URI}/updateproject`, {
                     method: 'post',
                     headers: headers,
                     body: JSON.stringify(newProject)
@@ -192,7 +226,7 @@ const SettingsContextProvider = (props) => {
     function deleteCurrentProject() {
         createHeader()
         .then(headers => {
-            fetch('https://radiant-ridge-57401.herokuapp.com/delproject', {
+            fetch(`${process.env.REACT_APP_API_URI}/delproject`, {
                 method: 'post',
                 headers: headers,
                 body: JSON.stringify({ project_id: currentProject.project_id })
@@ -219,7 +253,7 @@ const SettingsContextProvider = (props) => {
 
             createHeader()
             .then(headers => {
-                fetch('https://radiant-ridge-57401.herokuapp.com/addtask', {
+                fetch(`${process.env.REACT_APP_API_URI}/addtask`, {
                     method: 'post',
                     headers: headers,
                     body: JSON.stringify(newTask)
@@ -273,7 +307,7 @@ const SettingsContextProvider = (props) => {
         if (isAuthenticated) {
             createHeader()
             .then(headers => {
-                fetch('https://radiant-ridge-57401.herokuapp.com/updatetask', {
+                fetch(`${process.env.REACT_APP_API_URI}/updatetask`, {
                     method: 'post',
                     headers: headers,
                     body: JSON.stringify(updatedTask)
@@ -296,7 +330,7 @@ const SettingsContextProvider = (props) => {
         if (isAuthenticated) {
             createHeader()
             .then(headers => {
-                fetch('https://radiant-ridge-57401.herokuapp.com/deltask', {
+                fetch(`${process.env.REACT_APP_API_URI}/deltask`, {
                     method: 'post',
                     headers: headers,
                     body: JSON.stringify({
@@ -322,7 +356,7 @@ const SettingsContextProvider = (props) => {
         if (isAuthenticated) {
             createHeader()
             .then(headers => {
-                fetch('https://radiant-ridge-57401.herokuapp.com/delcompletedtasks', {
+                fetch(`${process.env.REACT_APP_API_URI}/delcompletedtasks`, {
                     method: 'post',
                     headers: headers,
                     body: JSON.stringify({
@@ -457,7 +491,9 @@ const SettingsContextProvider = (props) => {
         isAuthenticated, 
         logout, 
         user,
-        firstTime
+        firstTime,
+        resetPassword,
+        deleteUser
     }}>
         {props.children}
     </SettingContext.Provider>
