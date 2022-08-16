@@ -42,9 +42,9 @@ const SettingsContextProvider = (props) => {
     const [startTimerAnimation, setStartTimerAnimation] = useState(false);
     const [timerSettings, setTimerSettings] = useState({
         settings_id: 0,
-        work_time: 10,
-        short_brk_time: 2,
-        long_brk_time: 4,
+        work_time: 25,
+        short_brk_time: 5,
+        long_brk_time: 15,
         short_brk__brk_freq: 1,
         long_brk__brk_freq: 5,
         show_notif: true,
