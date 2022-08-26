@@ -91,6 +91,7 @@ const SettingsContextProvider = (props) => {
                 setTimerSettings(data.settings[0]);
                 setProjectList(data.projects.flat());
                 setCurrentProject(data.projects[0][0]);
+                console.log(data.tasks)
                 setToDoList(data.tasks);
                 setfirstTime(false);
             })
