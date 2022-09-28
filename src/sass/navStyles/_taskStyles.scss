@@ -104,7 +104,7 @@
     resize: none;
     padding: 2px;
     height: 1.35rem;
-    width: 65%;
+    max-width: 13rem;
 
     &:focus {
         border: 2px solid $dark-green;
