@@ -22,7 +22,6 @@ const Auth0ProviderWithHistory = ({ children }) => {
 			scope='openid profile email'
 			onRedirectCallback={onRedirectCallback}
 			useRefreshTokens
-			cacheLocation='localstorage'
 		>
 			{children}
 		</Auth0Provider>
