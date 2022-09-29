@@ -21,7 +21,6 @@ const Auth0ProviderWithHistory = ({ children }) => {
 			audience={apiID}
 			scope='openid profile email'
 			onRedirectCallback={onRedirectCallback}
-			useRefreshTokens
 		>
 			{children}
 		</Auth0Provider>
