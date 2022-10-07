@@ -12,6 +12,7 @@
 - [Features](#features)
 - [Status](#status)
 - [Inspiration](#inspiration)
+- [License](#license)
 - [Contact](#contact)
 
 ## General info
@@ -80,6 +81,16 @@ Currently, the project is in the _staging_ phase. As seen in the segment before,
 ## Inspiration
 
 The inspiration for this project came from the [nesto](https://nesto.cc/) Pomodoro app. It's an app I've used while going through my tasks, including developing this project. I decided to create my own due to some of the features I find necessary for my workflow still being under development or only available to premium users.
+
+## License
+
+MIT License.
+
+You can create your own Pomodoro app for free without notifying me by forking this project under the following conditions:
+
+- Add a link to my original app
+
+Check out LICENSE for more detail.
 
 ## Contact
 
