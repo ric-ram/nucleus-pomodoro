@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Nucleus Pomodoro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Example screenshot](./images/screenshot-nucleus.png)
 
-## Available Scripts
+> A pomodoro timer with fully customizable settings while allowing it's users' to create projects with tasks associated to them.
 
-In the project directory, you can run:
+## Table of contents
 
-### `npm start`
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [Status](#status)
+- [Inspiration](#inspiration)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## General info
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project aims to help the user increase their productivity by allowing them to focus on a single task at a time using the Pomodoro technique. For more information on the Pomodoro technique, please read the following article by [Todoist](https://todoist.com/productivity-methods/pomodoro-technique).
 
-### `npm test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ReactJS
+- Auth0
+- SASS
+- Bootstrap
 
-### `npm run build`
+## Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+~~~linux
+git clone https://github.com/ric-ram/nucleus-pomodoro.git
+cd nucleus-pomodoro
+~~~
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Install dependencies:
 
-### `npm run eject`
+~~~linux
+npm install
+~~~
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To run the app:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+~~~linux
+npm start
+~~~
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+It runs the app in development mode.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Open <http://localhost:3000> to view it in the browser.
 
-## Learn More
+The page will reload if you make edits.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You will also see any lint errors in the console.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features
 
-### Code Splitting
+Current features:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Fully customizable timer
+- Sign in/Sign Up & account management
+- Project/Task creation & management
 
-### Analyzing the Bundle Size
+To-do list:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [ ] Implement a modal to warn users of possible bugs during the staging phase.
+- [ ] Fix bugs:
+  - [ ] Fix empty page after project creation
+  - [ ] Disable task focus after being completed
+  - [ ] Fix automatic refresh and logout when the database is updated
+- [ ] Add Pomodoro count for each task
+- [ ] Add hover behavior for buttons for a better UX
+- [ ] Do more extensive testing
 
-### Making a Progressive Web App
+## Status
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Currently, the project is in the _staging_ phase. As seen in the segment before, there are still some bugs to fix and more features to implement. Therefore, I'll be updating the project in the following months.
 
-### Advanced Configuration
+## Inspiration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The inspiration for this project came from the [nesto](https://nesto.cc/) Pomodoro app. It's an app I've used while going through my tasks, including developing this project. I decided to create my own due to some of the features I find necessary for my workflow still being under development or only available to premium users.
 
-### Deployment
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Created by [Ricardo Ramos](https://github.com/ric-ram/) - feel free to contact me via email at r.[ramos@ricardoframos.com](mailto:ramos@ricardoframos.com)
