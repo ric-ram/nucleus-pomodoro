@@ -41,13 +41,21 @@ Install dependencies:
 npm install
 ~~~
 
-To run the app:
+Update de environment variables with your own:
+
+~~~txt
+#.env
+REACT_APP_AUTH0_DOMAIN=your-auth0-domain
+REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id
+REACT_APP_AUTH0_API_ID=your-auth0-api-id
+REACT_APP_API_URI=your-auth0-api-uri
+~~~
+
+After updating the environment variables, you can run the app in development:
 
 ~~~linux
 npm start
 ~~~
-
-It runs the app in development mode.
 
 Open <http://localhost:3000> to view it in the browser.
 
