@@ -48,7 +48,7 @@ Update de environment variables with your own:
 REACT_APP_AUTH0_DOMAIN=your-auth0-domain
 REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id
 REACT_APP_AUTH0_API_ID=your-auth0-api-id
-REACT_APP_API_URI=your-auth0-api-uri
+REACT_APP_API_URI=your-api-uri
 ~~~
 
 After updating the environment variables, you can run the app in development:
@@ -78,6 +78,8 @@ To-do list:
   - [ ] Fix empty page after project creation
   - [ ] Disable task focus after being completed
   - [ ] Fix automatic refresh and logout when the database is updated
+  - [ ] Reset timer after changing task
+  - [ ] If refreshed, it always requires to login
 - [ ] Add Pomodoro count for each task
 - [ ] Add hover behavior for buttons for a better UX
 - [ ] Do more extensive testing
@@ -102,4 +104,4 @@ Check out LICENSE for more detail.
 
 ## Contact
 
-Created by [Ricardo Ramos](https://github.com/ric-ram/) - feel free to contact me via email at r.[ramos@ricardoframos.com](mailto:ramos@ricardoframos.com)
+Created by [Ricardo Ramos](https://github.com/ric-ram/) - feel free to contact me via email at [r.ramos@ricardoframos.com](mailto:ramos@ricardoframos.com)
