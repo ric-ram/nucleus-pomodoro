@@ -21,10 +21,9 @@ This project aims to help the user increase their productivity by allowing them 
 
 ## Technologies
 
-- ReactJS
-- Auth0
-- SASS
-- Bootstrap
+- [ReactJS](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [Auth0](https://auth0.com/) - An easy-to-implement, adaptable authentication and authorisation platform
+- [SASS](https://sass-lang.com/) - A powerful professional-grade CSS extension
 
 ## Setup
 
@@ -67,9 +66,10 @@ You will also see any lint errors in the console.
 
 Current features:
 
-- Fully customizable timer
+- Fully customisable timer
 - Sign in/Sign Up & account management
 - Project/Task creation & management
+- Responsive design
 
 To-do list:
 
@@ -79,9 +79,9 @@ To-do list:
   - [ ] Disable task focus after being completed
   - [ ] Fix automatic refresh and logout when the database is updated
   - [ ] Reset timer after changing task
-  - [ ] If refreshed, it always requires to login
+  - [ ] If refreshed, it always requires the user to log in again
 - [ ] Add Pomodoro count for each task
-- [ ] Add hover behavior for buttons for a better UX
+- [ ] Add hover behaviour for buttons for a better UX
 - [ ] Do more extensive testing
 
 ## Status
